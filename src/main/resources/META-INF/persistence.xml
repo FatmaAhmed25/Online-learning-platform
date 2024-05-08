@@ -9,6 +9,10 @@
 <!--    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>-->
 
     <class>com.example.onlinelearningplatform.entities.TestEntity</class>
+    <class>com.example.onlinelearningplatform.entities.User</class>
+    <class>com.example.onlinelearningplatform.entities.Admin</class>
+
+
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
