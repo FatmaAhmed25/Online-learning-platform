@@ -1,5 +1,9 @@
 package com.example.onlinelearningplatform.ejbs;
 
+import com.example.onlinelearningplatform.DTOs.RegisterInstructorDTO;
+import com.example.onlinelearningplatform.DTOs.RegisterStudentDTO;
+import com.example.onlinelearningplatform.entities.Instructor;
+import com.example.onlinelearningplatform.entities.Student;
 import com.example.onlinelearningplatform.entities.User;
 import com.example.onlinelearningplatform.entities.UserRole;
 
@@ -20,29 +24,15 @@ public class RegistrationEJB
         em=emf.createEntityManager();
     }
 
-    public void registerStudent(String name, String email, String password, String affiliation, String bio)
+    public void registerStudent(RegisterStudentDTO studentDTO)
     {
-        User student = new User();
-        student.setName(name);
-        student.setEmail(email);
-        student.setPassword(password);
-        student.setAffiliation(affiliation);
-        student.setBio(bio);
-        student.setRole(UserRole.STUDENT);
+        Student student = new Student(studentDTO.getName(),studentDTO.getEmail(),studentDTO.getPassword(),studentDTO.getAffiliation(),studentDTO.getBio(),UserRole.STUDENT);
 
         em.persist(student);
     }
 
-    public void registerInstructor(String name, String email, String password, String affiliation, String bio, int yearsOfExperience) {
-        User instructor = new User();
-        instructor.setName(name);
-        instructor.setEmail(email);
-        instructor.setPassword(password);
-        instructor.setAffiliation(affiliation);
-        instructor.setBio(bio);
-        instructor.setYearsOfExperience(yearsOfExperience);
-        instructor.setRole(UserRole.INSTRUCTOR);
-
+    public void registerInstructor(RegisterInstructorDTO instructorDTO) {
+        Instructor instructor = new Instructor(instructorDTO.getName(),instructorDTO.getEmail(),instructorDTO.getPassword(),instructorDTO.getAffiliation(),instructorDTO.getBio(),UserRole.INSTRUCTOR, instructorDTO.getYearsOfExperience());
         em.persist(instructor);
     }
 

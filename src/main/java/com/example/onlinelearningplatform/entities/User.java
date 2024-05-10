@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name="user")
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,8 +16,18 @@ public class User {
     private String password;
     private String affiliation;
     private String bio;
-    private Integer yearsOfExperience; // Only applicable for instructors
 
+    public User() {
+    }
+
+    public User(String name, String email, String password, String affiliation, String bio, UserRole role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.affiliation = affiliation;
+        this.bio = bio;
+        this.role = role;
+    }
     @Enumerated(EnumType.STRING)
     private UserRole role;
     public Long getId() {
@@ -43,9 +54,7 @@ public class User {
         return bio;
     }
 
-    public Integer getYearsOfExperience() {
-        return yearsOfExperience;
-    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -69,10 +78,6 @@ public class User {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public void setYearsOfExperience(Integer yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
     }
 
     public void setRole(UserRole role) {

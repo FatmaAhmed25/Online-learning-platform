@@ -1,6 +1,10 @@
 package com.example.onlinelearningplatform.rest;
 
+import com.example.onlinelearningplatform.DTOs.RegisterInstructorDTO;
+import com.example.onlinelearningplatform.DTOs.RegisterStudentDTO;
 import com.example.onlinelearningplatform.ejbs.RegistrationEJB;
+import com.example.onlinelearningplatform.entities.Instructor;
+import com.example.onlinelearningplatform.entities.Student;
 import com.example.onlinelearningplatform.entities.User;
 import com.example.onlinelearningplatform.entities.UserRole;
 
@@ -25,26 +29,24 @@ public class RegistrationController {
 
     @POST
     @Path("/student")
-    public Response registerStudent(User user) {
+    public Response registerStudent(RegisterStudentDTO student) {
         try {
 
-            registrationEJB.registerStudent(user.getName(), user.getEmail(), user.getPassword(), user.getAffiliation(), user.getBio());
-            user.setRole(UserRole.STUDENT);
-            return Response.status(Response.Status.CREATED).entity(user).build();
+            registrationEJB.registerStudent(student);
+            return Response.status(Response.Status.CREATED).entity(student).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering user").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering student").build();
         }
     }
     @POST
     @Path("/instructor")
-    public Response registerInstructor(User user) {
+    public Response registerInstructor(RegisterInstructorDTO instructor) {
         try {
 
-                registrationEJB.registerInstructor(user.getName(), user.getEmail(), user.getPassword(), user.getAffiliation(), user.getBio(), user.getYearsOfExperience());
-                user.setRole(UserRole.INSTRUCTOR);
-                return Response.status(Response.Status.CREATED).entity(user).build();
+                registrationEJB.registerInstructor(instructor);
+                return Response.status(Response.Status.CREATED).entity(instructor).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering user").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering instructor").build();
         }
     }
 
