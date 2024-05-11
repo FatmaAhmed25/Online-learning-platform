@@ -34,6 +34,8 @@ public class RegistrationController {
 
             registrationEJB.registerStudent(student);
             return Response.status(Response.Status.CREATED).entity(student).build();
+        }catch (javax.ejb.EJBException ejbEx) {
+                return Response.status(Response.Status.BAD_REQUEST).entity("Email already exists").build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering student").build();
         }
@@ -45,6 +47,8 @@ public class RegistrationController {
 
                 registrationEJB.registerInstructor(instructor);
                 return Response.status(Response.Status.CREATED).entity(instructor).build();
+        }catch (javax.ejb.EJBException ejbEx) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Email already exists").build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error registering instructor").build();
         }
