@@ -21,8 +21,17 @@ public class Course {
     private double rating;
     private int capacity;
     private boolean status=false;
+    private int numberOfEnrolledStudents;
 
     @ElementCollection
     private Set<Long> enrolledStudentIds = new HashSet<>();
 
+    public Course() {
+        // Initialize enrolledStudentIds if it's null
+        if (this.enrolledStudentIds == null) {
+            this.enrolledStudentIds = new HashSet<>();
+        }
+        // Initialize numberOfEnrolledStudents
+        this.numberOfEnrolledStudents = this.enrolledStudentIds.size();
+    }
 }

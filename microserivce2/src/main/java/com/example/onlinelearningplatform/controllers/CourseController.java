@@ -57,6 +57,11 @@ public class CourseController {
     public ResponseEntity<?> enrollStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
         return courseService.enrollStudent(studentId, courseId);
     }
+    @GetMapping("/enrolledcourses/{studentId}")
+    public ResponseEntity<List<Course>> getEnrolledCoursesForStudent(@PathVariable Long studentId) {
+        List<Course> enrolledCourses = courseService.getEnrolledCoursesForStudent(studentId);
+        return ResponseEntity.ok(enrolledCourses);
+    }
 
 
 }

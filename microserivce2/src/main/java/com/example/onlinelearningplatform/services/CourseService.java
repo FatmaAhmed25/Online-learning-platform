@@ -84,6 +84,11 @@ public class CourseService {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error enrolling student");
     }
 
+    public List<Course> getEnrolledCoursesForStudent(Long studentId) {
+        // Retrieve enrolled courses for the student
+        return courseRepository.findByEnrolledStudentIdsContains(studentId);
+    }
+
 
 
 }
