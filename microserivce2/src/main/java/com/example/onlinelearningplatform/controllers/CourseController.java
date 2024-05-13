@@ -31,24 +31,16 @@ public class CourseController {
     }
 
     @PostMapping("/approve/{courseId}")
-    public ResponseEntity<Course> approveCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
-        Course approvedCourse = courseService.approveCourse(courseId, adminId);
-        if (approvedCourse != null) {
-            return ResponseEntity.ok().body(approvedCourse);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Object> approveCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
+        return  courseService.approveCourse(courseId, adminId);
+
     }
 
 
     @PostMapping("/reject/{courseId}")
-    public ResponseEntity<String> rejectCourse(@PathVariable Long courseId) {
-        boolean isRejected = courseService.rejectCourse(courseId);
-        if (isRejected) {
-            return ResponseEntity.ok().body("Course rejected successfully");
-        } else {
-            return ResponseEntity.badRequest().body("Course cannot be rejected");
-        }
+    public ResponseEntity<Object> rejectCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
+       return courseService.rejectCourse(courseId, adminId);
+
     }
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {

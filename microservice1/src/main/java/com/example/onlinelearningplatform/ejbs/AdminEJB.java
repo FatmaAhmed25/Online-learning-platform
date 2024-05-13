@@ -1,5 +1,6 @@
 package com.example.onlinelearningplatform.ejbs;
 
+import com.example.onlinelearningplatform.entities.Admin;
 import com.example.onlinelearningplatform.entities.Instructor;
 import com.example.onlinelearningplatform.entities.Student;
 import com.example.onlinelearningplatform.entities.User;
@@ -16,6 +17,11 @@ import java.util.List;
 public class AdminEJB {
 
     EntityManager em;
+    public boolean validateAdmin(Long adminId) {
+        // Check if an instructor with the given ID exists in the database
+        Admin admin = em.find(Admin.class, adminId);
+        return admin != null;
+    }
 
     public AdminEJB() {
         EntityManagerFactory emf= Persistence.createEntityManagerFactory("default");

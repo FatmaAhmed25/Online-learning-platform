@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,27 +35,43 @@ public class CourseService {
     public List<Course> getPendingCourses() {
         return courseRepository.findByStatus(CourseStatus.PENDING);
     }
-    public Course approveCourse(Long courseId, Long adminId) {
+    public ResponseEntity<Object> approveCourse(Long courseId, Long adminId) {
+        if(validationService.validateAdmin(adminId))
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin with ID: "+adminId+" doesn't exist");
+        }
         Optional<Course> optionalCourse = courseRepository.findById(courseId);
 
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
 
-            if (course.getStatus().equals(CourseStatus.PENDING)) {
+            if (course.getStatus().equals(CourseStatus.PENDING))
+            {
                 course.setStatus(CourseStatus.APPROVED);
                 course.setAdminId(adminId);
 
-                return courseRepository.save(course);
-            } else {
-
-                return null;
+                return ResponseEntity.status(HttpStatus.OK).body(courseRepository.save(course));
             }
-        } else {
-            return null;
+            else
+            {
+
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body("Course : " + courseId
+                                + "is Already approved");
+            }
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
         }
     }
 
-    public boolean rejectCourse(Long courseId) {
+    public ResponseEntity<Object> rejectCourse(Long courseId,Long adminId) {
+
+        if(validationService.validateAdmin(adminId))
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin with ID: "+adminId+" doesn't exist");
+        }
+
         Optional<Course> optionalCourse = courseRepository.findById(courseId);
 
         if (optionalCourse.isPresent()) {
@@ -66,13 +79,14 @@ public class CourseService {
 
             if (course.getStatus().equals(CourseStatus.PENDING)) {
                 courseRepository.delete(course);
-                return true;
-            } else {
+                return ResponseEntity.ok().body("Course rejected successfully");
+            }
+            else {
 
-                return false;
+                return ResponseEntity.badRequest().body("Course is already accepted");
             }
         } else {
-            return false;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
         }
     }
     public List<Course> searchCoursesByName(String name) {

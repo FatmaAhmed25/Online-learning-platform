@@ -11,6 +11,14 @@ import org.springframework.web.client.RestTemplate;
 public class ValidationService {
     @Autowired
     private RestTemplate restTemplate;
+
+    public boolean validateAdmin(Long adminId) {
+        // Make HTTP request to external API to validate instructor ID
+        String url = "http://localhost:8080/Online-Learning-Platform-1.0-SNAPSHOT/api/admin/validate?id=" + adminId;
+        Boolean isValid = restTemplate.getForObject(url, Boolean.class);
+        return isValid == null || !isValid; // Assuming the API returns a boolean indicating validity
+    }
+
     public boolean validateInstructor(Long instructorId) {
         // Make HTTP request to external API to validate instructor ID
         String url = "http://localhost:8080/Online-Learning-Platform-1.0-SNAPSHOT/api/instructor/" + instructorId;

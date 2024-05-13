@@ -20,6 +20,12 @@ public class AdminController {
     AdminEJB adminEJB;
 
     @GET
+    @Path("/validate")
+    public boolean validateInstructorId(@QueryParam("id") Long instructorId) {
+        return adminEJB.validateAdmin(instructorId);
+    }
+
+    @GET
     @Path("/users")
     public Response getAllUsers() {
         List<User> users = adminEJB.getAllUserAccounts();
