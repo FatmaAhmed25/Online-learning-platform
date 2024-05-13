@@ -20,11 +20,14 @@ public class Course {
     private int duration;
     private double rating;
     private int capacity;
-    private boolean status=false;
     private int numberOfEnrolledStudents;
 
+    private Long adminId;
+    @Enumerated(EnumType.STRING)
+    private CourseStatus status = CourseStatus.PENDING;
     @ElementCollection
     private Set<Long> enrolledStudentIds = new HashSet<>();
+
 
     public Course() {
         // Initialize enrolledStudentIds if it's null

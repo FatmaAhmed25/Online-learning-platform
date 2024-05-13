@@ -24,6 +24,32 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @GetMapping("/pending")
+    public ResponseEntity<List<Course>> getCoursesPendingReview() {
+        List<Course> pendingCourses = courseService.getPendingCourses();
+        return ResponseEntity.ok(pendingCourses);
+    }
+
+    @PostMapping("/approve/{courseId}")
+    public ResponseEntity<Course> approveCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
+        Course approvedCourse = courseService.approveCourse(courseId, adminId);
+        if (approvedCourse != null) {
+            return ResponseEntity.ok().body(approvedCourse);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @PostMapping("/reject/{courseId}")
+    public ResponseEntity<String> rejectCourse(@PathVariable Long courseId) {
+        boolean isRejected = courseService.rejectCourse(courseId);
+        if (isRejected) {
+            return ResponseEntity.ok().body("Course rejected successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Course cannot be rejected");
+        }
+    }
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
         List<Course> courses = courseService.getAllCourses();

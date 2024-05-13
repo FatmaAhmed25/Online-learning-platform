@@ -48,6 +48,7 @@ public class EnrollmentService {
                 // Update the enrolled student IDs
                 Set<Long> enrolledStudentIds = course.getEnrolledStudentIds();
                 enrolledStudentIds.add(studentId);
+                course.setNumberOfEnrolledStudents(course.getNumberOfEnrolledStudents()+1);
                 course.setEnrolledStudentIds(enrolledStudentIds);
                 courseRepository.save(course);
             }

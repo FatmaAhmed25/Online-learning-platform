@@ -1,10 +1,7 @@
 package com.example.onlinelearningplatform.services;
 
 
-import com.example.onlinelearningplatform.models.Course;
-import com.example.onlinelearningplatform.models.Enrollment;
-import com.example.onlinelearningplatform.models.EnrollmentStatus;
-import com.example.onlinelearningplatform.models.Notification;
+import com.example.onlinelearningplatform.models.*;
 import com.example.onlinelearningplatform.repositories.CourseRepository;
 import com.example.onlinelearningplatform.repositories.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +24,59 @@ public class CourseService {
 
 
     public List<Course> getAllCourses() {
-        return courseRepository.findAll();
-    }
-    public Optional<Course> getCourseById(Long id)
-    {
-        return courseRepository.findById(id);
+        return courseRepository.findByStatus(CourseStatus.APPROVED);
     }
 
+    public Optional<Course> getCourseById(Long id) {
+        return courseRepository.findByIdAndStatus(id, CourseStatus.APPROVED);
+    }
+
+    public List<Course> getPendingCourses() {
+        return courseRepository.findByStatus(CourseStatus.PENDING);
+    }
+    public Course approveCourse(Long courseId, Long adminId) {
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+
+        if (optionalCourse.isPresent()) {
+            Course course = optionalCourse.get();
+
+            if (course.getStatus().equals(CourseStatus.PENDING)) {
+                course.setStatus(CourseStatus.APPROVED);
+                course.setAdminId(adminId);
+
+                return courseRepository.save(course);
+            } else {
+
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public boolean rejectCourse(Long courseId) {
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+
+        if (optionalCourse.isPresent()) {
+            Course course = optionalCourse.get();
+
+            if (course.getStatus().equals(CourseStatus.PENDING)) {
+                courseRepository.delete(course);
+                return true;
+            } else {
+
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     public List<Course> searchCoursesByName(String name) {
-        return courseRepository.findByNameContainingIgnoreCase(name);
+        return courseRepository.findByNameContainingIgnoreCaseAndStatus(name, CourseStatus.APPROVED);
     }
 
     public List<Course> getCoursesByCategory(String category) {
-        return courseRepository.findByCategoryContainingIgnoreCase(category);
+        return courseRepository.findByCategoryContainingIgnoreCaseAndStatus(category, CourseStatus.APPROVED);
     }
 
     public List<Course> getTopRatedCourses() {
@@ -48,8 +85,10 @@ public class CourseService {
 
     public Course createCourse(Course course, Long instructorId) {
         course.setInstructorId(instructorId); // Set the instructor ID
+
         return courseRepository.save(course);
     }
+
 
     public ResponseEntity<String> enrollStudent(Long studentId, Long courseId) {
         //if there is already an enrollment request with the same courseId and studentId
@@ -70,8 +109,7 @@ public class CourseService {
         }
 
         // Proceed with enrolling the student if there is no existing enrollment request
-        Course course = courseRepository.findById(courseId).orElse(null);
-
+        Course course = courseRepository.findByIdAndStatus(courseId, CourseStatus.APPROVED).orElse(null);
         if (course != null && !course.getEnrolledStudentIds().contains(studentId)) {
             Enrollment enrollment = new Enrollment();
             enrollment.setCourseId(courseId);
@@ -93,6 +131,7 @@ public class CourseService {
         // Retrieve enrolled courses for the student
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
+
 
 
 
