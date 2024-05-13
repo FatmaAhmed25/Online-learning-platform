@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +25,8 @@ public class CourseService {
     private CourseRepository courseRepository;
     @Autowired
     private EnrollmentRepository enrollmentRepository;
+    @Autowired
+    private ValidationService validationService;
 
 
 
@@ -46,12 +50,22 @@ public class CourseService {
         return courseRepository.findByOrderByRatingDesc();
     }
 
-    public Course createCourse(Course course, Long instructorId) {
+    public ResponseEntity<Object> createCourse(Course course, Long instructorId) {
+        if(!validationService.validateInstructor(instructorId))
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor with ID: "+instructorId+" doesn't exist");
+        }
         course.setInstructorId(instructorId); // Set the instructor ID
-        return courseRepository.save(course);
+        Course savedCourse = courseRepository.save(course);
+
+        return ResponseEntity.status(HttpStatus.OK).body(savedCourse);
     }
 
     public ResponseEntity<String> enrollStudent(Long studentId, Long courseId) {
+        if(!validationService.validateStudent(studentId))
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student with ID: "+studentId+" doesn't exist");
+        }
         //if there is already an enrollment request with the same courseId and studentId
         Optional<Enrollment> existingRequest = enrollmentRepository
                 .findByStudentIdAndCourseId(studentId, courseId);
@@ -71,17 +85,17 @@ public class CourseService {
 
         // Proceed with enrolling the student if there is no existing enrollment request
         Course course = courseRepository.findById(courseId).orElse(null);
-
+        if(course == null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
+        }
         if (course != null && !course.getEnrolledStudentIds().contains(studentId)) {
             Enrollment enrollment = new Enrollment();
             enrollment.setCourseId(courseId);
             enrollment.setStudentId(studentId);
             enrollmentRepository.save(enrollment);
 
-
             courseRepository.save(course);
-
-
             // Return a success response
             return ResponseEntity.status(HttpStatus.OK).body("Student with ID: " + studentId
                     + " has request to enroll in course with ID: " + courseId);
@@ -93,6 +107,7 @@ public class CourseService {
         // Retrieve enrolled courses for the student
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
+
 
 
 
