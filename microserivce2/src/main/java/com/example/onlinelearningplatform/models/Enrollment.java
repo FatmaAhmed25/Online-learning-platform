@@ -16,7 +16,6 @@ public class Enrollment {
     private Long studentId;
     private Long courseId;
 
-    // Add status field with enum type
     @Enumerated(EnumType.STRING)
     private EnrollmentStatus status = EnrollmentStatus.PENDING;
 

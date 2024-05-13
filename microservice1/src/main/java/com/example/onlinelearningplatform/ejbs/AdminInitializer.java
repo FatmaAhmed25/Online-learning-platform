@@ -15,7 +15,6 @@ import javax.persistence.TypedQuery;
 @Singleton
 @Startup
 public class AdminInitializer {
-
     EntityManager em;
 
     public AdminInitializer() {

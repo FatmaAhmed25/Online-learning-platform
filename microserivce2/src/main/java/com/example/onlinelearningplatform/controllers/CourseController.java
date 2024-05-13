@@ -75,9 +75,8 @@ public class CourseController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Course> createCourse(@RequestBody Course course, @RequestParam Long instructorId) {
-        Course createdCourse = courseService.createCourse(course, instructorId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdCourse);
+    public ResponseEntity<Object> createCourse(@RequestBody Course course, @RequestParam Long instructorId) {
+        return courseService.createCourse(course,instructorId);
     }
     @PostMapping("/enroll/{studentId}/{courseId}")
     public ResponseEntity<?> enrollStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
