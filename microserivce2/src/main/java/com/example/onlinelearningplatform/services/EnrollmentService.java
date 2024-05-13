@@ -4,6 +4,7 @@ package com.example.onlinelearningplatform.services;
 import com.example.onlinelearningplatform.models.Course;
 import com.example.onlinelearningplatform.models.Enrollment;
 import com.example.onlinelearningplatform.models.EnrollmentStatus;
+import com.example.onlinelearningplatform.models.Notification;
 import com.example.onlinelearningplatform.repositories.CourseRepository;
 import com.example.onlinelearningplatform.repositories.EnrollmentRepository;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -25,6 +27,8 @@ public class EnrollmentService {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private NotificationService notificationService;
     public ResponseEntity<String> approveEnrollment(Long enrollmentId) {
         Enrollment enrollment = enrollmentRepository.findById(enrollmentId).orElse(null);
 
@@ -48,6 +52,13 @@ public class EnrollmentService {
                 courseRepository.save(course);
             }
 
+            Notification notification = new Notification();
+            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+"has been approved");
+            notification.setTimestamp(LocalDateTime.now());
+            notification.setStudentId(enrollment.getStudentId());
+
+            // Send notification
+            notificationService.sendNotification(notification);
             return ResponseEntity.status(HttpStatus.OK)
                     .body("Enrollment request with ID " + enrollmentId + " has been approved.");
         } else if (enrollment != null && enrollment.getStatus().equals(EnrollmentStatus.ACCEPTED)) {
@@ -85,6 +96,13 @@ public class EnrollmentService {
             enrollment.setStatus(EnrollmentStatus.REJECTED);
             enrollmentRepository.save(enrollment);
 
+            Notification notification = new Notification();
+            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+"has been rejected");
+            notification.setTimestamp(LocalDateTime.now());
+            notification.setStudentId(enrollment.getStudentId());
+
+                // Send notification
+                notificationService.sendNotification(notification);
             return ResponseEntity.status(HttpStatus.OK)
                     .body("Enrollment request with ID " + enrollmentId + " has been rejected.");
         }}

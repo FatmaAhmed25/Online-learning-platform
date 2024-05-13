@@ -4,6 +4,7 @@ package com.example.onlinelearningplatform.services;
 import com.example.onlinelearningplatform.models.Course;
 import com.example.onlinelearningplatform.models.Enrollment;
 import com.example.onlinelearningplatform.models.EnrollmentStatus;
+import com.example.onlinelearningplatform.models.Notification;
 import com.example.onlinelearningplatform.repositories.CourseRepository;
 import com.example.onlinelearningplatform.repositories.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +23,8 @@ public class CourseService {
     private CourseRepository courseRepository;
     @Autowired
     private EnrollmentRepository enrollmentRepository;
+
+
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
@@ -76,6 +80,7 @@ public class CourseService {
 
 
             courseRepository.save(course);
+
 
             // Return a success response
             return ResponseEntity.status(HttpStatus.OK).body("Student with ID: " + studentId
