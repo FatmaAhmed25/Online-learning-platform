@@ -6,6 +6,7 @@ import com.example.onlinelearningplatform.models.Enrollment;
 import com.example.onlinelearningplatform.models.EnrollmentStatus;
 import com.example.onlinelearningplatform.repositories.CourseRepository;
 import com.example.onlinelearningplatform.repositories.EnrollmentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,8 @@ public class EnrollmentService {
             Enrollment enrollment = optionalEnrollment.get();
 
             // if the enrollment is not already approved
+
+
             if (enrollment.getStatus().equals(EnrollmentStatus.ACCEPTED)) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("Enrollment request with ID " + enrollmentId + " is already approved. It cannot be rejected.");
@@ -100,6 +103,43 @@ public class EnrollmentService {
 
         //enrollment requests for courses owned by the instructor
         return enrollmentRepository.findByCourseIdInAndStatus(courseIds,EnrollmentStatus.PENDING);
+    }
+    public List<Enrollment> getEnrollmentsForStudent(Long studentId) {
+        return enrollmentRepository.findByStudentId(studentId);
+    }
+
+    public List<Enrollment> getAcceptedEnrollmentsForStudent(Long studentId) {
+        return enrollmentRepository.findByStudentIdAndStatus(studentId, EnrollmentStatus.ACCEPTED);
+    }
+
+    public List<Enrollment> getRejectedEnrollmentsForStudent(Long studentId) {
+        return enrollmentRepository.findByStudentIdAndStatus(studentId, EnrollmentStatus.REJECTED);
+    }
+
+    public List<Enrollment> getPendingEnrollmentsForStudent(Long studentId) {
+        return enrollmentRepository.findByStudentIdAndStatus(studentId, EnrollmentStatus.PENDING);
+    }
+
+    //da law hcancel ay enrollment(accepted,rejected,pending)
+    @Transactional
+    public void cancelEnrollment(Long studentId, Long courseId) {
+        enrollmentRepository.deleteByStudentIdAndCourseIdAndStatus(studentId, courseId, EnrollmentStatus.PENDING);
+    }
+
+    @Transactional
+    public void cancelPendingEnrollment(Long studentId, Long courseId)
+    {
+        Optional<Enrollment> enrollmentOptional = enrollmentRepository.findByStudentIdAndCourseId(studentId, courseId);
+        if (enrollmentOptional.isPresent()) {
+            Enrollment enrollment = enrollmentOptional.get();
+            if (enrollment.getStatus() == EnrollmentStatus.PENDING) {
+                enrollmentRepository.delete(enrollment);
+            } else {
+                throw new IllegalStateException("Enrollment is not pending and cannot be canceled.");
+            }
+        } else {
+            throw new IllegalArgumentException("Enrollment not found for the given student and course.");
+        }
     }
 
 

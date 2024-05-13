@@ -15,4 +15,8 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment,Long> {
 
     // Method to find enrollments by courseId in a set of courseId and status is PENDING
     List<Enrollment> findByCourseIdInAndStatus(Set<Long> courseIds, EnrollmentStatus status);
+    List<Enrollment> findByStudentId(Long studentId);
+    List<Enrollment> findByStudentIdAndStatus(Long studentId, EnrollmentStatus status);
+
+    void deleteByStudentIdAndCourseIdAndStatus(Long studentId, Long courseId, EnrollmentStatus status);
 }
