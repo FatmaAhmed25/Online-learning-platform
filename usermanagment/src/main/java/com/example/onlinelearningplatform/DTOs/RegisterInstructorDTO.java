@@ -1,5 +1,7 @@
 package com.example.onlinelearningplatform.DTOs;
 
+import com.example.onlinelearningplatform.entities.UserRole;
+
 public class RegisterInstructorDTO {
     private String name;
     private String email;
@@ -7,6 +9,12 @@ public class RegisterInstructorDTO {
     private String affiliation;
     private String bio;
     private Integer yearsOfExperience;
+
+    private UserRole role;
+
+    public UserRole getRole() {
+        return role;
+    }
 
     public String getName() {
         return name;
