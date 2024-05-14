@@ -16,69 +16,34 @@ import java.util.List;
 @RequestMapping("/courses")
 public class CourseController {
 
-//    @GetMapping("")
-//    public String show(){
-//        return "index";
-//    }
-
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/pending")
-    public ResponseEntity<List<Course>> getCoursesPendingReview() {
-        List<Course> pendingCourses = courseService.getPendingCourses();
-        return ResponseEntity.ok(pendingCourses);
-    }
 
-    @PostMapping("/approve/{courseId}")
-    public ResponseEntity<Object> approveCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
-        return  courseService.approveCourse(courseId, adminId);
-
-    }
-
-
-    @PostMapping("/reject/{courseId}")
-    public ResponseEntity<Object> rejectCourse(@PathVariable Long courseId, @RequestParam Long adminId) {
-       return courseService.rejectCourse(courseId, adminId);
-
-    }
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
         List<Course> courses = courseService.getAllCourses();
         return ResponseEntity.ok(courses);
     }
-
-    @GetMapping("/search")
+    @GetMapping("/search/name")
     public ResponseEntity<List<Course>> searchCoursesByName(@RequestParam String name) {
         List<Course> courses = courseService.searchCoursesByName(name);
         return ResponseEntity.ok(courses);
     }
 
-    @GetMapping("/category/{category}")
+    @GetMapping("/search/category/{category}")
     public ResponseEntity<List<Course>> getCoursesByCategory(@PathVariable String category) {
         List<Course> courses = courseService.getCoursesByCategory(category);
         return ResponseEntity.ok(courses);
     }
 
-    @GetMapping("/top-rated")
+    @GetMapping("/search/top-rated")
     public ResponseEntity<List<Course>> getTopRatedCourses() {
         List<Course> courses = courseService.getTopRatedCourses();
         return ResponseEntity.ok(courses);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Object> createCourse(@RequestBody Course course, @RequestParam Long instructorId) {
-        return courseService.createCourse(course,instructorId);
-    }
-    @PostMapping("/enroll/{studentId}/{courseId}")
-    public ResponseEntity<?> enrollStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
-        return courseService.enrollStudent(studentId, courseId);
-    }
-    @GetMapping("/enrolledcourses/{studentId}")
-    public ResponseEntity<List<Course>> getEnrolledCoursesForStudent(@PathVariable Long studentId) {
-        List<Course> enrolledCourses = courseService.getEnrolledCoursesForStudent(studentId);
-        return ResponseEntity.ok(enrolledCourses);
-    }
+
 
 
 }

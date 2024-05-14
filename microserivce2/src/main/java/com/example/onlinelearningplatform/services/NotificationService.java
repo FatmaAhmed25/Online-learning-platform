@@ -22,7 +22,6 @@ public class NotificationService {
 
     }
     public List<Notification> getAllNotificationsSortedByTimestampDesc(Long studentId) {
-        // Fetch all notifications from the repository
         List<Notification> notifications = notificationRepository.findByStudentId(studentId);
 
         // Sort notifications by timestamp in descending order

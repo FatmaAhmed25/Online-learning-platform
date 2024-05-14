@@ -17,12 +17,6 @@ public class CourseService {
 
     @Autowired
     private CourseRepository courseRepository;
-    @Autowired
-    private EnrollmentRepository enrollmentRepository;
-    @Autowired
-    private ValidationService validationService;
-
-
 
     public List<Course> getAllCourses() {
         return courseRepository.findByStatus(CourseStatus.APPROVED);
@@ -32,63 +26,7 @@ public class CourseService {
         return courseRepository.findByIdAndStatus(id, CourseStatus.APPROVED);
     }
 
-    public List<Course> getPendingCourses() {
-        return courseRepository.findByStatus(CourseStatus.PENDING);
-    }
-    public ResponseEntity<Object> approveCourse(Long courseId, Long adminId) {
-        if(validationService.validateAdmin(adminId))
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin with ID: "+adminId+" doesn't exist");
-        }
-        Optional<Course> optionalCourse = courseRepository.findById(courseId);
 
-        if (optionalCourse.isPresent()) {
-            Course course = optionalCourse.get();
-
-            if (course.getStatus().equals(CourseStatus.PENDING))
-            {
-                course.setStatus(CourseStatus.APPROVED);
-                course.setAdminId(adminId);
-
-                return ResponseEntity.status(HttpStatus.OK).body(courseRepository.save(course));
-            }
-            else
-            {
-
-                return ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body("Course : " + courseId
-                                + "is Already approved");
-            }
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
-        }
-    }
-
-    public ResponseEntity<Object> rejectCourse(Long courseId,Long adminId) {
-
-        if(validationService.validateAdmin(adminId))
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin with ID: "+adminId+" doesn't exist");
-        }
-
-        Optional<Course> optionalCourse = courseRepository.findById(courseId);
-
-        if (optionalCourse.isPresent()) {
-            Course course = optionalCourse.get();
-
-            if (course.getStatus().equals(CourseStatus.PENDING)) {
-                courseRepository.delete(course);
-                return ResponseEntity.ok().body("Course rejected successfully");
-            }
-            else {
-
-                return ResponseEntity.badRequest().body("Course is already accepted");
-            }
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
-        }
-    }
     public List<Course> searchCoursesByName(String name) {
         return courseRepository.findByNameContainingIgnoreCaseAndStatus(name, CourseStatus.APPROVED);
     }
@@ -98,71 +36,10 @@ public class CourseService {
     }
 
     public List<Course> getTopRatedCourses() {
-        return courseRepository.findByOrderByRatingDesc();
-    }
-
-    public ResponseEntity<Object> createCourse(Course course, Long instructorId) {
-        if(!validationService.validateInstructor(instructorId))
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Instructor with ID: "+instructorId+" doesn't exist");
-        }
-        course.setInstructorId(instructorId); // Set the instructor ID
-
-        Course savedCourse = courseRepository.save(course);
-
-        return ResponseEntity.status(HttpStatus.OK).body(savedCourse);
-
+        return courseRepository.findByStatusOrderByRatingDesc(CourseStatus.APPROVED);
     }
 
 
-    public ResponseEntity<String> enrollStudent(Long studentId, Long courseId) {
-        if(!validationService.validateStudent(studentId))
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student with ID: "+studentId+" doesn't exist");
-        }
-        //if there is already an enrollment request with the same courseId and studentId
-        Optional<Enrollment> existingRequest = enrollmentRepository
-                .findByStudentIdAndCourseId(studentId, courseId);
-
-        if (existingRequest.isPresent()) {
-            // If there is an existing enrollment request
-            if (existingRequest.get().getStatus()== EnrollmentStatus.ACCEPTED)
-            {    return ResponseEntity.status(HttpStatus.CONFLICT).body("Student with ID: " + studentId
-                       + " is already enrolled in course with ID: " + courseId);}
-            else if (existingRequest.get().getStatus()== EnrollmentStatus.PENDING){
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("There is already an enrollment request for student ID: " + studentId
-                            + " and course ID: " + courseId);
-        }
-
-        }
-
-        // Proceed with enrolling the student if there is no existing enrollment request
-
-        Course course = courseRepository.findByIdAndStatus(courseId, CourseStatus.APPROVED).orElse(null);
-        if(course == null)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
-        }
-
-        if (course != null && !course.getEnrolledStudentIds().contains(studentId)) {
-            Enrollment enrollment = new Enrollment();
-            enrollment.setCourseId(courseId);
-            enrollment.setStudentId(studentId);
-            enrollmentRepository.save(enrollment);
-
-            courseRepository.save(course);
-            // Return a success response
-            return ResponseEntity.status(HttpStatus.OK).body("Student with ID: " + studentId
-                    + " has request to enroll in course with ID: " + courseId);
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error enrolling student");
-    }
-
-    public List<Course> getEnrolledCoursesForStudent(Long studentId) {
-        // Retrieve enrolled courses for the student
-        return courseRepository.findByEnrolledStudentIdsContains(studentId);
-    }
 
 
 

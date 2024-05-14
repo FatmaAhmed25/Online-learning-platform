@@ -28,7 +28,7 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
 
     List<Course> findByCategoryContainingIgnoreCaseAndStatus(String category, CourseStatus status);
 
-    //List<Course> findByOrderByRatingDescAndStatus(CourseStatus status);
+    List<Course> findByStatusOrderByRatingDesc(CourseStatus status);
 
     List<Course> findByEnrolledStudentIdsContainsAndStatus(Long studentId, CourseStatus status);;
 }

@@ -8,12 +8,6 @@ import javax.ws.rs.core.Application;
 
 
 @ApplicationPath("/api")
-@SwaggerDefinition(info = @Info(
-        title = "Example Service",
-        description = "A simple example of apiee",
-        version = "1.0.0")
-)
-
 public class HelloApplication extends Application {
 
 }

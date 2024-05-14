@@ -20,13 +20,12 @@ public class ValidationService {
     }
 
     public boolean validateInstructor(Long instructorId) {
-        // Make HTTP request to external API to validate instructor ID
+
         String url = "http://localhost:8080/Online-Learning-Platform-1.0-SNAPSHOT/api/instructor/" + instructorId;
         try {
-            // Make a GET request to the API endpoint
+
             ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
 
-            // Check the HTTP status code of the response
             if (response.getStatusCode() == HttpStatus.OK) {
                 return true;
             } else if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
@@ -35,10 +34,9 @@ public class ValidationService {
                 return false;
             }
         } catch (HttpClientErrorException.NotFound e) {
-            // Handle 404 Not Found error
+         //404 Not Found error
             return false;
         } catch (Exception e) {
-            // Handle other exceptions
             e.printStackTrace();
             return false;
         }
@@ -47,24 +45,21 @@ public class ValidationService {
         String apiUrl = "http://localhost:8080/Online-Learning-Platform-1.0-SNAPSHOT/api/student/" + studentId;
 
         try {
-            // Make a GET request to the API endpoint
             ResponseEntity<Void> response = restTemplate.getForEntity(apiUrl, Void.class);
-
             // Check the HTTP status code of the response
             if (response.getStatusCode() == HttpStatus.OK) {
-                // Student exists, return true
+                // Student exists
                 return true;
             } else if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
-                // Student does not exist, return false
+                // Student does not exist
                 return false;
             } else {
                 return false;
             }
         } catch (HttpClientErrorException.NotFound e) {
-            // Handle 404 Not Found error
+            //404 Not Found error
             return false;
         } catch (Exception e) {
-            // Handle other exceptions
             e.printStackTrace();
             return false;
         }
