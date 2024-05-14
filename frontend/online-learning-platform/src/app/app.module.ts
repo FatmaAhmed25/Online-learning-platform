@@ -14,13 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentComponent } from './student/student.component';
 import { InstructorComponent } from './instructor/instructor.component';
+import { HomepageComponent } from './homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     StudentComponent,
-    InstructorComponent
+    InstructorComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserAnimationsModule,
