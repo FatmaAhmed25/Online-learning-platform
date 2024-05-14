@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62c84717-eb41-4e40-b449-4addd0054d1e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../microservice1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/OnlineLearningPlatformApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/CourseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/EnrollmentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/InstructorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/NotificationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/controllers/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/models/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/models/CourseStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/models/Enrollment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/models/EnrollmentStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/models/Notification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/repositories/CourseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/repositories/EnrollmentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/repositories/NotificationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/restTemplate/RestTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/CourseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/EnrollmentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/InstructorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/NotificationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlinelearningplatform/services/ValidationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/onlinelearningplatform/OnlineLearningPlatformApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/CORSFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/CORSFilterProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/DTOs/CourseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/DTOs/LoginDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/DTOs/RegisterInstructorDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/DTOs/RegisterStudentDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/customExceptions/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/AdminEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/AdminInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/AuthenticationEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/CourseEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/InstructorEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/RegistrationEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/ejbs/StudentEJB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/Instructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/TestEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/entities/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/CourseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/InstructorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/RegistrationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/java/com/example/onlinelearningplatform/rest/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/resources/META-INF/beans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice1/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2gI3B8mmZrFdpHUQkG7j95ahFvV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.OnlineLearningPlatformApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lenovo/Documents/GitHub/Online-learning-platform/coursemanagement",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="OnlineLearningPlatformApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Online-Learning-Platform" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.onlinelearningplatform.OnlineLearningPlatformApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62c84717-eb41-4e40-b449-4addd0054d1e" name="Changes" comment="" />
+      <created>1715371128753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715371128753</updated>
+      <workItem from="1715371129903" duration="6628000" />
+      <workItem from="1715430880451" duration="12170000" />
+      <workItem from="1715453853744" duration="43945000" />
+      <workItem from="1715627149906" duration="14521000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
