@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StudentComponent } from './student/student.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AdminComponent } from './admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     RegisterComponent,
     StudentComponent,
     InstructorComponent,
-    HomepageComponent
+    HomepageComponent,
+    AdminComponent
   ],
   imports: [
     BrowserAnimationsModule,
