@@ -30,6 +30,7 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
 
     List<Course> findByStatusOrderByRatingDesc(CourseStatus status);
 
-    List<Course> findByEnrolledStudentIdsContainsAndStatus(Long studentId, CourseStatus status);;
+    List<Course> findByEnrolledStudentIdsContainsAndStatus(Long studentId, CourseStatus status);
+    long countByStatus(CourseStatus status);
 }
 

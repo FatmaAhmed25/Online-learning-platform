@@ -20,6 +20,11 @@ public class CourseController {
     private CourseService courseService;
 
 
+    @GetMapping("/count")
+    public long getNumberOfCourses() {
+        return courseService.count();
+    }
+
     @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
         List<Course> courses = courseService.getAllCourses();
