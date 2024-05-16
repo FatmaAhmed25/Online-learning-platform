@@ -43,4 +43,5 @@ public class CourseService {
     public long count() {
         return courseRepository.countByStatus(CourseStatus.APPROVED);
     }
+
 }
