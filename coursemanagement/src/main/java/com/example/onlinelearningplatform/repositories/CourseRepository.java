@@ -43,9 +43,5 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
             "WHERE ce.enrolled_student_ids <> :studentId OR ce.enrolled_student_ids IS NULL", nativeQuery = true)
     List<Course> findAvailableCoursesForStudent(@Param("studentId") Long studentId);
 
-
-    boolean existsByIdAndEnrolledStudentIdsIsContaining(Long courseId, Long studentId);
-
-
 }
 
