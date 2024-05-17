@@ -25,6 +25,30 @@
   color: #1f2937; /* Example color */
 }
 
+.order-tab button.active {
+  background-color: #e2e8f0; /* Active tab background color */
+  color: #1a202c; /* Active tab text color */
+}
+
+/* Add custom scrollbar styling if needed */
+.overflow-x-auto {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #a0aec0 #edf2f7; /* Firefox */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  width: 8px; /* Chrome, Safari, and Opera */
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #edf2f7; /* Chrome, Safari, and Opera */
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: #a0aec0; /* Chrome, Safari, and Opera */
+  border-radius: 10px; /* Chrome, Safari, and Opera */
+  border: 2px solid #edf2f7; /* Chrome, Safari, and Opera */
+}
 
 html {
   line-height: 1.5;
