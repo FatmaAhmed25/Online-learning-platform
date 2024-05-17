@@ -9,7 +9,7 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent {
-  studentId: string | undefined = "9";
+  studentId: any | undefined ;
   courses: Course[] | undefined;
 
   constructor(private route: ActivatedRoute, private studentService:StudentService) {}
@@ -20,6 +20,9 @@ export class StudentComponent {
   //     this.studentId = params['studentId'];
   //   });
   // }
+  this.route.params.subscribe(params => {
+    this.studentId = +params['id'];
+  });
   this.fetchAvailableCourses();
 
 }

@@ -1,6 +1,9 @@
 <header>
-    <h1>Welcome to Student Dashboard</h1>
+    <h1>Student Dashboard</h1>
     <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">Enroll in New Courses</button>
+    <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">View My Enrollment Requests</button>
+    <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">Notifications</button>
+    
 </header>
 <main>
     <div class="filter">
@@ -9,6 +12,7 @@
             <option value="ratings">Sort by Ratings</option>
         </select>
     </div>
+    <h3>My Courses</h3>
     <div class="course-card" *ngFor="let course of courses">
         <h2>{{ course.name }}</h2>
         <p>Category: {{ course.category }}</p>

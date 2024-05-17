@@ -12,17 +12,15 @@ import { SearchService } from '../services/search.service';
 export class AllCoursesComponent {
 
 
-  studentId: string | undefined ='9';
+  studentId: any | undefined ;
   selectedFilter: string = 'name';
 
   constructor(private route: ActivatedRoute,private studentService: StudentService, private searchService:SearchService) {}
 
   ngOnInit(): void {
-    // Retrieve the student ID from the route parameters
-    // this.route.params.subscribe(params => {
-    //   this.studentId = params['studentId'];
-    //   console.log(this.studentId);
-    // });
+    this.route.params.subscribe(params => {
+      this.studentId = +params['id'];
+    });
     this.fetchAvailableCourses();
   }
   courses: Course[] = [];

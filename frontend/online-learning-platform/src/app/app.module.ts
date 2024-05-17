@@ -18,6 +18,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdminComponent } from './admin/admin.component';
 import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
+import { StudentEnrollmentsComponent } from './student-enrollments/student-enrollments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
     HomepageComponent,
     AdminComponent,
     RegsiterinstructorComponent,
-    AllCoursesComponent
+    AllCoursesComponent,
+    StudentEnrollmentsComponent
   ],
   imports: [
     BrowserAnimationsModule,
