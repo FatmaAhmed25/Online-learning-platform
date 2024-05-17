@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Enrollment } from '../models/Enrollment.model';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class InstructorService {
-  private baseUrl = 'http://localhost:8081'; // Base URL
+
+  private baseUrl = 'http://localhost:8081'; // Base URL for API
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +21,6 @@ export class InstructorService {
   getCountOfPendingCourses(instructorId: number): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/instructor/${instructorId}/pending-count`);
   }
-
   // Function to get pending enrollments for instructor
   getPendingEnrollments(instructorId: number): Observable<Enrollment[]> {
     return this.http.get<Enrollment[]>(`${this.baseUrl}/enrollments/enrollment-requests/${instructorId}`);
