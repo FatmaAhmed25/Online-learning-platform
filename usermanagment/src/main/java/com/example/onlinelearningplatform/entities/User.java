@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user")
+
 public class User {
 
 
@@ -30,6 +31,13 @@ public class User {
     }
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }

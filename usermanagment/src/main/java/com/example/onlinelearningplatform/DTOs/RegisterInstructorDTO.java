@@ -8,7 +8,7 @@ public class RegisterInstructorDTO {
     private String password;
     private String affiliation;
     private String bio;
-    private Integer yearsOfExperience;
+    private String yearsOfExperience;
 
     private UserRole role;
 
@@ -36,7 +36,7 @@ public class RegisterInstructorDTO {
         return bio;
     }
 
-    public Integer getYearsOfExperience() {
+    public String getYearsOfExperience() {
         return yearsOfExperience;
     }
 }
