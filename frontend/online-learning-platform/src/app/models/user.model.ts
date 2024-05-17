@@ -7,6 +7,6 @@ export interface User {
     password: string;
     affiliation?: string; // Optional property
     bio?: string; // Optional property
-    role: UserRole; // Assuming you have a role property in your user object
+    role: UserRole; 
   }
   

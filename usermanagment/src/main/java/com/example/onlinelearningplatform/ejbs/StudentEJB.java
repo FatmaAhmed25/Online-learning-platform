@@ -27,4 +27,8 @@ public class StudentEJB {
 
 
     }
+    public long getNumberOfStudents() {
+        Query query = em.createQuery("SELECT COUNT(u) FROM Student u");
+        return (long) query.getSingleResult();
+    }
 }

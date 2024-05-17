@@ -15,8 +15,6 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserController {
-
-
     @EJB
     private UserEJB userEJB;
     @GET

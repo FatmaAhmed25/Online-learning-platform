@@ -29,9 +29,9 @@ public class AdminService {
     public List<Course> getAcceptedCourses() {
         return courseRepository.findByStatus(CourseStatus.APPROVED);
     }
-//    public List<Course> getRejectedCourses() {
-//        return courseRepository.findByStatus(CourseStatus.PENDING);
-//    }
+    public List<Course> getRejectedCourses() {
+        return courseRepository.findByStatus(CourseStatus.PENDING);
+    }
 
     public ResponseEntity<Object> approveCourse(Long courseId, Long adminId) {
         if(validationService.validateAdmin(adminId))
@@ -87,6 +87,4 @@ public class AdminService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
         }
     }
-
-
 }

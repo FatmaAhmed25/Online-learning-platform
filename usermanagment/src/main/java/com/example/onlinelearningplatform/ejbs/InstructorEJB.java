@@ -25,6 +25,9 @@ public class InstructorEJB {
             return null;
         }
 
-
+    }
+    public long getNumberOfInstructors() {
+        Query query = em.createQuery("SELECT COUNT(u) FROM Instructor u");
+        return (long) query.getSingleResult();
     }
 }

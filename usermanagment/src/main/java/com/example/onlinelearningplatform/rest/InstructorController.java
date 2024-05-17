@@ -28,4 +28,11 @@ public class InstructorController {
         return Response.ok(instructor).build();
 
     }
+    @GET
+    @Path("/count")
+    public Response getNumberOfInstructors() {
+        long noOfUsers=instructorEJB.getNumberOfInstructors();
+        return Response.ok(noOfUsers).build();
+
+    }
 }
