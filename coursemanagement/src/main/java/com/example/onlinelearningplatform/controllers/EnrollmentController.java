@@ -32,7 +32,17 @@ public class EnrollmentController {
     }
     @GetMapping("/enrollment-requests/{instructorId}")
     public ResponseEntity<List<Enrollment>> getEnrollmentRequestsForInstructor(@PathVariable Long instructorId) {
-        List<Enrollment> enrollmentRequests = enrollmentService.getEnrollmentRequestsForInstructor(instructorId);
+        List<Enrollment> enrollmentRequests = enrollmentService.getPendingRequestsForInstructor(instructorId);
+        return ResponseEntity.ok(enrollmentRequests);
+    }
+    @GetMapping("/approved-enrollment-requests/{instructorId}")
+    public ResponseEntity<List<Enrollment>> getAcceptedRequestsForInstructor(@PathVariable Long instructorId) {
+        List<Enrollment> enrollmentRequests = enrollmentService.getApprovedRequestsForInstructor(instructorId);
+        return ResponseEntity.ok(enrollmentRequests);
+    }
+    @GetMapping("/rejected-enrollment-requests/{instructorId}")
+    public ResponseEntity<List<Enrollment>> getRejectedRequestsForInstructor(@PathVariable Long instructorId) {
+        List<Enrollment> enrollmentRequests = enrollmentService.getRejectedEnrollmentRequestsForInstructor(instructorId);
         return ResponseEntity.ok(enrollmentRequests);
     }
     @GetMapping("/student/{studentId}")
