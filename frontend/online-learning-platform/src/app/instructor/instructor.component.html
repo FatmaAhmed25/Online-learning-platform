@@ -147,111 +147,59 @@
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-                    <div class="flex justify-between mb-4 items-start">
-                        <div class="font-medium">Courses</div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
-                        </div>
+                  <div class="flex justify-between mb-4 items-start">
+                    <div class="font-medium">Enrollments</div>
+                    <div class="dropdown">
+                      <button type="button" class="dropdown-toggle text-gray-400 hover:text-gray-600"><i class="ri-more-fill"></i></button>
                     </div>
-                    <div class="flex items-center mb-4 order-tab">
-                        <button type="button" data-tab="order" data-tab-page="active" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tl-md rounded-bl-md hover:text-gray-600 active">Pending</button>
-                        <button type="button" data-tab="order" data-tab-page="completed" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 hover:text-gray-600">Accepted</button>
-                        <button type="button" data-tab="order" data-tab-page="canceled" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tr-md rounded-br-md hover:text-gray-600">Rejected</button>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
-                            <thead>
-                                <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Course</th>
-
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Instructor Id</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Course 1</a>
-                                        </div>
-                                    </td>
-                    
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">2</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Course 2</a>
-                                        </div>
-                                    </td>
-                     
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">2</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Pending</a>
-                                        </div>
-                                    </td>
-                  
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">2</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Course 4</a>
-                                        </div>
-                                    </td>
-                       
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">2</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">Course 5</a>
-                                        </div>
-                                    </td>
-                          
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">2</span>
-                                    </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">Pending</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                       
-                        
-                    </div>
+                  </div>
+                  <div class="flex items-center mb-4 order-tab">
+                    <button type="button" (click)="selectTab('pending')" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tl-md rounded-bl-md hover:text-gray-600" [class.active]="selectedTab === 'pending'">Pending</button>
+                    <button type="button" (click)="selectTab('accepted')" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 hover:text-gray-600" [class.active]="selectedTab === 'accepted'">Accepted</button>
+                    <button type="button" (click)="selectTab('rejected')" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tr-md rounded-br-md hover:text-gray-600" [class.active]="selectedTab === 'rejected'">Rejected</button>
+                  </div>
+                  <div class="overflow-x-auto">
+                    <table class="w-full min-w-[540px]">
+                      <thead>
+                        <tr>
+                          <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Course</th>
+                          <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Student Id</th>
+                          <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Status</th>
+                          <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left" *ngIf="selectedTab === 'pending'">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let enrollment of getFilteredEnrollments()">
+                          <td class="py-2 px-4 border-b border-b-gray-50">
+                            <div class="flex items-center">
+                              <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
+                              <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ enrollment.courseName }}</a>
+                            </div>
+                          </td>
+                          <td class="py-2 px-4 border-b border-b-gray-50">
+                            <span class="text-[13px] font-medium text-gray-400">{{ enrollment.studentId }}</span>
+                          </td>
+                          <td class="py-2 px-4 border-b border-b-gray-50">
+                            <span class="inline-block p-1 rounded" [ngClass]="{
+                              'bg-emerald-500/10 text-emerald-500': enrollment.status === 'PENDING',
+                              'bg-blue-500/10 text-blue-500': enrollment.status === 'ACCEPTED',
+                              'bg-red-500/10 text-red-500': enrollment.status === 'REJECTED'
+                            }">{{ enrollment.status }}</span>
+                          </td>
+                          <td class="py-2 px-4 border-b border-b-gray-50" *ngIf="selectedTab === 'pending'">
+                            <button (click)="approveEnrollment(enrollment.id)" class="text-sm font-medium text-green-600 hover:text-green-800 mr-2">Approve</button>
+                            <button (click)="rejectEnrollment(enrollment.id)" class="text-sm font-medium text-red-600 hover:text-red-800">Reject</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              </div>
+              
+              
                
-            </div>
+            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div class="flex justify-between mb-4 items-start">
