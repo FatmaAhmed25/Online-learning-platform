@@ -3,6 +3,7 @@ package com.example.onlinelearningplatform.ejbs;
 
 import com.example.onlinelearningplatform.entities.Admin;
 import com.example.onlinelearningplatform.entities.User;
+import com.example.onlinelearningplatform.entities.UserRole;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -40,6 +41,7 @@ public class AdminInitializer {
         admin.setName(name);
         admin.setEmail(email);
         admin.setPassword(password);
+        admin.setRole(UserRole.ADMIN);
         em.persist(admin);
     }
 }

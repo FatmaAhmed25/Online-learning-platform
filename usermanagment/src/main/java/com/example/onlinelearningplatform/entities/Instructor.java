@@ -8,19 +8,19 @@ public class Instructor extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer yearsOfExperience;
+    private String yearsOfExperience;
 
 
     public Instructor() {
         super();
     }
-    public Instructor(String name, String email, String password, String affiliation, String bio, UserRole role,Integer yearsOfExperience) {
+    public Instructor(String name, String email, String password, String affiliation, String bio, UserRole role,String yearsOfExperience) {
         super(name, email, password, affiliation, bio, role);
         this.yearsOfExperience=yearsOfExperience;
     }
 
 
-    public Integer getYearsOfExperience() {
+    public String getYearsOfExperience() {
         return yearsOfExperience;
     }
 
