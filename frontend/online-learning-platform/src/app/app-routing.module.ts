@@ -9,9 +9,10 @@ import { AdminComponent } from './admin/admin.component';
 import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
 
 const routes: Routes = [
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: HomepageComponent },
   { path: 'registerstudent', component: RegisterComponent },
   { path: 'registerinstructor', component: RegsiterinstructorComponent },
-  { path: 'home', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin/:id', component: AdminComponent },
   { path: 'student/:id', component: StudentComponent },

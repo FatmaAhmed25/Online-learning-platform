@@ -26,4 +26,11 @@ public class StudentController {
             return Response.ok(student).build();
 
     }
+    @GET
+    @Path("/count")
+    public Response getNumberOfUsers() {
+        long noOfUsers=studentEJB.getNumberOfStudents();
+        return Response.ok(noOfUsers).build();
+
+    }
 }

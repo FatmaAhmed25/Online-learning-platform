@@ -18,8 +18,7 @@ public class InstructorService {
 
     @Autowired
     private ValidationService validationService;
-
-
+    
     public ResponseEntity<Object> createCourse(Course course, Long instructorId) {
         if(!validationService.validateInstructor(instructorId))
         {

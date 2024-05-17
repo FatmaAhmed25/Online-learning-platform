@@ -36,11 +36,11 @@ public class AdminController {
         List<Course> acceptedCourses = adminService.getAcceptedCourses();
         return ResponseEntity.ok(acceptedCourses);
     }
-//    @GetMapping("/Rejected")
-//    public ResponseEntity<List<Course>> getRejectedCourses() {
-//        List<Course> rejectedCourses = adminService.getRejectedCourses();
-//        return ResponseEntity.ok(pendingCourses);
-//    }
+    @GetMapping("/rejected")
+    public ResponseEntity<List<Course>> getRejectedCourses() {
+        List<Course> rejectedCourses = adminService.getRejectedCourses();
+        return ResponseEntity.ok(rejectedCourses);
+    }
 
 
 
