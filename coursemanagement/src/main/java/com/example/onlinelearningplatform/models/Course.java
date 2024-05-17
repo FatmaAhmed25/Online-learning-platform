@@ -28,6 +28,8 @@ public class Course {
     @ElementCollection
     private Set<Long> enrolledStudentIds = new HashSet<>();
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<CourseReview> reviews = new HashSet<>();
 
     public Course() {
         // Initialize enrolledStudentIds if it's null

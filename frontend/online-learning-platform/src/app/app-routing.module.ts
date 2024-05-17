@@ -9,6 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { StudentEnrollmentsComponent } from './student-enrollments/student-enrollments.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
 
 const routes: Routes = [
   { path: 'registerstudent', component: RegisterComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'instructor/:id', component: InstructorComponent },
   { path: 'AllCourses/:id', component: AllCoursesComponent },
   { path: 'studentEnrollments/:id', component: StudentEnrollmentsComponent}
+  { path: 'create-course', component: CreateCourseComponent },
 ];
 
 @NgModule({
