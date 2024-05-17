@@ -1,8 +1,10 @@
 <header>
     <h1>Student Dashboard</h1>
     <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">Enroll in New Courses</button>
-    <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">View My Enrollment Requests</button>
+
+ <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">View My Enrollment Requests</button>
     <button id="enrollBtn" (click)="getNotifications()">Notifications</button>
+
     
 </header>
 <main>
@@ -20,7 +22,7 @@
     </div>
 </main>
 
-<!-- <main>
+ <main>
     <div class="filter">
         <input type="text" id="searchInput" placeholder="Search by name or category">
         <select id="sortBy">
@@ -33,5 +35,5 @@
         <p>Category: {{ course.category }}</p>
         <p>Ratings: {{ course.rating }}</p>
          <button class="enroll-btn" (click)="enroll(course.id!)">Enroll</button> -->
-    <!-- </div>
-</main>  -->
+    </div>
+</main> 
