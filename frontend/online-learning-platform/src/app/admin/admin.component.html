@@ -174,7 +174,7 @@
                         <button type="button" (click)="fetchRejectedCourses()" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tr-md rounded-br-md hover:text-gray-600">Rejected</button>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full min-w-[540px]" data-tab-for="order" data-page="active">
+                        <table class="w-full min-w-[650px]" data-tab-for="order" data-page="active">
                             <thead>
                                 <tr>
                                     <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Course</th>
@@ -194,10 +194,10 @@
                                         <span class="text-[13px] font-medium text-gray-400">{{ course.instructorId }}</span>
                                     </td>
                                     <td class="py-2 px-4 border-b border-b-gray-50">
-                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none">{{ course.status }}</span>
-                                        <div *ngIf="course.status === CourseStatus.PENDING"class="mt-2">
-                                            <button type="button" class="bg-blue-500 text-white py-1 px-2 rounded-md mr-2">Accept</button>
-                                            <button type="button" class="bg-red-500 text-white py-1 px-2 rounded-md">Reject</button>
+                                        <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none ">{{ course.status }}</span>
+                                        <div *ngIf="course.status === CourseStatus.PENDING && course.id !== undefined"class="mt-2">
+                                            <button type="button" class="bg-blue-500 text-white py-1 px-2 rounded-md mr-2 " (click)="approveCourse(course.id, 1)">Accept</button>
+                                            <button type="button" class="bg-rose-500 text-white py-1 px-2 rounded-md" (click)="rejectCourse(course.id, 1)">Reject</button>
                                         </div>
                                     </td>
                                 </tr>

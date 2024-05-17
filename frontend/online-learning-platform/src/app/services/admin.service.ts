@@ -1,25 +1,45 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 @Injectable({
   providedIn: 'root'
+
 })
+
 export class AdminService {
 
   private userManagementURL = 'http://localhost:8080/Online-Learning-Platform-3.0-SNAPSHOT/api'; 
   private courseManagementURL = 'http://localhost:8081'; 
 
-
   constructor(private http: HttpClient) { }
 
   approveCourse(courseId: number, adminId: number): Observable<any> {
-    return this.http.post<any>(`${this.userManagementURL}/admin/approve/${courseId}`, { adminId });
+    // Construct URL with courseId as path parameter
+    const url = `${this.courseManagementURL}/admin/approve/${courseId}`;
+
+    // Create HttpParams object for request parameters
+    const params = new HttpParams().set('adminId', adminId.toString());
+
+    // Make the HTTP POST request with the specified URL and request parameters
+    return this.http.post<any>(url, null, { params: params });
   }
 
-  rejectCourse(courseId: number, adminId: number): Observable<any> {
-    return this.http.post<any>(`${this.userManagementURL}/admin/reject/${courseId}`, { adminId });
+  rejectCourse(courseId: number, adminId: any): Observable<any> {
+   
+    // Construct URL with courseId as path parameter
+    const url = `${this.courseManagementURL}/admin/reject/${courseId}`;
+
+    // Create HttpParams object for request parameters
+    const params = new HttpParams().set('adminId', adminId.toString());
+
+    // Make the HTTP POST request with the specified URL and request parameters
+    return this.http.post<any>(url, null, { params: params });
   }
 
   getCoursesPending(): Observable<Course[]> {

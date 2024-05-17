@@ -106,8 +106,9 @@ export class AdminComponent {
   fetchRejectedCourses(): void {
     this.adminService.getRejectedCourses().subscribe(
       (courses: Course[]) => {
-        this.acceptedCourses = courses;
         this.courses =courses;
+        this.rejectedCourses = courses;
+        
       },
       (error) => {
         console.error('Error fetching accepted courses:', error);
@@ -123,6 +124,30 @@ export class AdminComponent {
       },
       (error) => {
         console.error('Error fetching all courses:', error);
+      }
+    );
+  }
+
+  approveCourse(courseId: number, adminId: number): void {
+    this.adminService.approveCourse(courseId, adminId).subscribe(
+      () => {
+        console.log('Course approved successfully');
+        this.fetchPendingCourses();
+      },
+      (error) => {
+        console.error('Error approving course:', error);
+      }
+    );
+  }
+
+  rejectCourse(courseId: number, adminId: number): void {
+    this.adminService.rejectCourse(courseId, adminId).subscribe(
+      () => {
+        console.log('Course rejected successfully');
+        this.fetchPendingCourses();
+      },
+      (error) => {
+        console.error('Error rejecting course:', error);
       }
     );
   }
