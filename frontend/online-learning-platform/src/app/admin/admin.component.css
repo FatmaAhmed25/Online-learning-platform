@@ -810,8 +810,8 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
-.bg-rose-500\/10{
-  background-color: rgb(244 63 94 / 0.1);
+.bg-rose-500{
+  background-color: rgb(174, 48, 69);
 }
 
 .bg-white{

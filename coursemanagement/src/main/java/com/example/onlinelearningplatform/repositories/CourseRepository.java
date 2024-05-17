@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface CourseRepository extends JpaRepository <Course,Long> {
-
     List<Course> findByNameContainingIgnoreCase(String name);
     List<Course> findByCategoryContainingIgnoreCase(String category);
     List<Course> findByOrderByRatingDesc();
@@ -20,7 +19,6 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
     List<Course> findByEnrolledStudentIdsContains(Long studentId);
 
     List<Course> findByStatus(CourseStatus courseStatus);
-
 
     Optional<Course> findByIdAndStatus(Long id, CourseStatus status);
 

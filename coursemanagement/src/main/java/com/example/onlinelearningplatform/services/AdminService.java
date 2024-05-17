@@ -30,7 +30,7 @@ public class AdminService {
         return courseRepository.findByStatus(CourseStatus.APPROVED);
     }
     public List<Course> getRejectedCourses() {
-        return courseRepository.findByStatus(CourseStatus.PENDING);
+        return courseRepository.findByStatus(CourseStatus.REJECTED);
     }
 
     public ResponseEntity<Object> approveCourse(Long courseId, Long adminId) {
@@ -76,7 +76,8 @@ public class AdminService {
             Course course = optionalCourse.get();
 
             if (course.getStatus().equals(CourseStatus.PENDING)) {
-                courseRepository.delete(course);
+                course.setStatus(CourseStatus.REJECTED);
+                courseRepository.save(course);
                 return ResponseEntity.ok().body("Course rejected successfully");
             }
             else {
