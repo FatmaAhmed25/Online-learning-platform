@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from '../models/course.model';
 import { StudentService } from '../services/student.service';
-
+import { NotificationService } from '../services/notficationservice.service';
+import { Notification } from '../models/notfication.model';
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -11,8 +12,10 @@ import { StudentService } from '../services/student.service';
 export class StudentComponent {
   studentId: any | undefined ;
   courses: Course[] | undefined;
+  notifications!: Notification[]; 
 
-  constructor(private route: ActivatedRoute, private studentService:StudentService) {}
+
+  constructor(private route: ActivatedRoute, private studentService:StudentService,private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     // Retrieve the student ID from the route parameters
@@ -24,6 +27,7 @@ export class StudentComponent {
     this.studentId = +params['id'];
   });
   this.fetchAvailableCourses();
+  // this.getNotifications();
 
 }
 fetchAvailableCourses(): void {
@@ -39,5 +43,12 @@ fetchAvailableCourses(): void {
       }
     );
   }
+}
+
+getNotifications(): void {
+  console.log('Getting notifications...');
+  console.log(this.studentId)
+  this.notificationService.getNotifications(this.studentId)
+    .subscribe(notifications => this.notifications = notifications);
 }
 }
