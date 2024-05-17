@@ -16,6 +16,7 @@ import { StudentComponent } from './student/student.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminComponent } from './admin/admin.component';
+import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { AdminComponent } from './admin/admin.component';
     StudentComponent,
     InstructorComponent,
     HomepageComponent,
-    AdminComponent
+    AdminComponent,
+    RegsiterinstructorComponent
   ],
   imports: [
     BrowserAnimationsModule,
