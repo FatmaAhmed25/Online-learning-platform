@@ -20,6 +20,11 @@
   --tw-content: '';
 }
 
+.active {
+  background-color: #e5e7eb; /* Example color */
+  color: #1f2937; /* Example color */
+}
+
 
 html {
   line-height: 1.5;
