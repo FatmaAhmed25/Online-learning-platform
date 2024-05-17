@@ -58,10 +58,11 @@ nav {
 }
 
 nav .logo a {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 570;
   color: #000033;
   transition: 0.3s;
+ 
 }
 nav .logo a:hover {
   color: var(--primary-color-dark);
