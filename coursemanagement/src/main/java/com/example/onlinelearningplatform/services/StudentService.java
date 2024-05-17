@@ -82,7 +82,9 @@ public class StudentService {
     public List<Course> getEnrolledCoursesForStudent(Long studentId) {
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
-
+     public List<Course> getAvailableCoursesForStudent(Long studentId) {
+        return courseRepository.findByEnrolledStudentIdsContains(studentId);
+    }
 
 
 }

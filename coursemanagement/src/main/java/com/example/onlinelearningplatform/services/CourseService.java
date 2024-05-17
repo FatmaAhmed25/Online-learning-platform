@@ -45,5 +45,8 @@ public class CourseService {
     public long count() {
         return courseRepository.countByStatus(CourseStatus.APPROVED);
     }
+    public List<Course> getAvailableCoursesForStudent(Long studentId) {
+        return courseRepository.findAvailableCoursesForStudent(studentId);
+    }
 
 }

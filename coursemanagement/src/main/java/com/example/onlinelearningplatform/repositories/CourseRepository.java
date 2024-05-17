@@ -4,6 +4,8 @@ package com.example.onlinelearningplatform.repositories;
 import com.example.onlinelearningplatform.models.Course;
 import com.example.onlinelearningplatform.models.CourseStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,6 +38,13 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
     boolean existsByIdAndEnrolledStudentIdsIsContaining(Long courseId, Long studentId);
     long countByStatus(CourseStatus status);
     List<Course> findCoursesByStatus(CourseStatus status);
+    @Query(value = "SELECT c.* FROM courses c " +
+            "LEFT JOIN course_enrolled_student_ids ce ON c.id = ce.course_id " +
+            "WHERE ce.enrolled_student_ids <> :studentId OR ce.enrolled_student_ids IS NULL", nativeQuery = true)
+    List<Course> findAvailableCoursesForStudent(@Param("studentId") Long studentId);
+
+
+    boolean existsByIdAndEnrolledStudentIdsIsContaining(Long courseId, Long studentId);
 
 
 }

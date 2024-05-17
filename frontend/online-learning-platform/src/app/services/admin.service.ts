@@ -31,7 +31,6 @@ export class AdminService {
   }
 
   rejectCourse(courseId: number, adminId: any): Observable<any> {
-   
     // Construct URL with courseId as path parameter
     const url = `${this.courseManagementURL}/admin/reject/${courseId}`;
 

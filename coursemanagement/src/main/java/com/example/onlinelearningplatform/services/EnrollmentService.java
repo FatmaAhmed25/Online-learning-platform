@@ -82,7 +82,6 @@ public class EnrollmentService {
 
             // if the enrollment is not already approved
 
-
             if (enrollment.getStatus().equals(EnrollmentStatus.ACCEPTED)) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("Enrollment request with ID " + enrollmentId + " is already approved. It cannot be rejected.");

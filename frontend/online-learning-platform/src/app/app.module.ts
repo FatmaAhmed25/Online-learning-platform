@@ -17,6 +17,7 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminComponent } from './admin/admin.component';
 import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
+import { AllCoursesComponent } from './all-courses/all-courses.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstru
     InstructorComponent,
     HomepageComponent,
     AdminComponent,
-    RegsiterinstructorComponent
+    RegsiterinstructorComponent,
+    AllCoursesComponent
   ],
   imports: [
     BrowserAnimationsModule,
