@@ -26,6 +26,14 @@
                 </a>
             </li>
             <li class="mb-1 group">
+                <a [routerLink]="['/create-course']" [queryParams]="{ instructorId: instructorId }" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
+                    <i class="fas fa-edit mr-3 text-lg"></i>
+                    <span class="text-sm">Create courses</span>
+                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
+                </a>
+ 
+            </li>
+            <li class="mb-1 group">
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle">
                     <i class="fas fa-book mr-3 text-lg"></i>
                     <span class="text-sm">My courses</span>
@@ -158,7 +166,7 @@
                     <button type="button" (click)="selectTab('accepted')" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 hover:text-gray-600" [class.active]="selectedTab === 'accepted'">Accepted</button>
                     <button type="button" (click)="selectTab('rejected')" class="bg-gray-50 text-sm font-medium text-gray-400 py-2 px-4 rounded-tr-md rounded-br-md hover:text-gray-600" [class.active]="selectedTab === 'rejected'">Rejected</button>
                   </div>
-                  <div class="overflow-x-auto">
+                  <div class="overflow-x-auto" style="max-height: 400px; overflow-y: auto;">
                     <table class="w-full min-w-[540px]">
                       <thead>
                         <tr>
@@ -173,7 +181,7 @@
                           <td class="py-2 px-4 border-b border-b-gray-50">
                             <div class="flex items-center">
                               <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
-                              <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ enrollment.courseName }}</a>
+                              <a href="#" class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ enrollment.courseId }}</a>
                             </div>
                           </td>
                           <td class="py-2 px-4 border-b border-b-gray-50">
@@ -203,32 +211,10 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div class="flex justify-between mb-4 items-start">
-                        <div class="font-medium">Course Statistics</div>
+                       
                        
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">10</div>
-                       
-                            </div>
-                            <span class="text-gray-400 text-sm">Active</span>
-                        </div>
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">50</div>
-
-                            </div>
-                            <span class="text-gray-400 text-sm">Completed</span>
-                        </div>
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">4</div>
-                               
-                            </div>
-                            <span class="text-gray-400 text-sm">Canceled</span>
-                        </div>
-                    </div>
+          
                     <div>
                         <canvas id="order-chart"></canvas>
                     </div>
