@@ -115,13 +115,30 @@ public class EnrollmentService {
         }
     }
 
-    public List<Enrollment> getEnrollmentRequestsForInstructor(Long instructorId) {
+    public List<Enrollment> getPendingRequestsForInstructor(Long instructorId) {
         // Retrieve all course IDs owned by the instructor
         List<Course> instructorCourses = courseRepository.findByInstructorId(instructorId);
         Set<Long> courseIds = instructorCourses.stream().map(Course::getId).collect(Collectors.toSet());
 
         //enrollment requests for courses owned by the instructor
         return enrollmentRepository.findByCourseIdInAndStatus(courseIds,EnrollmentStatus.PENDING);
+    }
+
+    public List<Enrollment> getApprovedRequestsForInstructor(Long instructorId) {
+        // Retrieve all course IDs owned by the instructor
+        List<Course> instructorCourses = courseRepository.findByInstructorId(instructorId);
+        Set<Long> courseIds = instructorCourses.stream().map(Course::getId).collect(Collectors.toSet());
+
+        //enrollment requests for courses owned by the instructor
+        return enrollmentRepository.findByCourseIdInAndStatus(courseIds,EnrollmentStatus.ACCEPTED);
+    }
+    public List<Enrollment> getRejectedEnrollmentRequestsForInstructor(Long instructorId) {
+        // Retrieve all course IDs owned by the instructor
+        List<Course> instructorCourses = courseRepository.findByInstructorId(instructorId);
+        Set<Long> courseIds = instructorCourses.stream().map(Course::getId).collect(Collectors.toSet());
+
+        //enrollment requests for courses owned by the instructor
+        return enrollmentRepository.findByCourseIdInAndStatus(courseIds,EnrollmentStatus.REJECTED);
     }
     public List<Enrollment> getEnrollmentsForStudent(Long studentId) {
         return enrollmentRepository.findByStudentId(studentId);
