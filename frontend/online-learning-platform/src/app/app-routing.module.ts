@@ -7,6 +7,7 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminComponent } from './admin/admin.component';
 import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstructor.component';
+import { AllCoursesComponent } from './all-courses/all-courses.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'admin/:id', component: AdminComponent },
   { path: 'student/:id', component: StudentComponent },
   { path: 'instructor/:id', component: InstructorComponent },
+  { path: 'AllCourses/:id', component: AllCoursesComponent },
 ];
 
 @NgModule({

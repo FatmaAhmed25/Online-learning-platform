@@ -29,6 +29,12 @@ public class StudentService {
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student with ID: "+studentId+" doesn't exist");
         }
+        // Check if the student is already enrolled in the course
+        boolean isAlreadyEnrolled = courseRepository.existsByIdAndEnrolledStudentIdsIsContaining(courseId,studentId);
+
+        if (isAlreadyEnrolled) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Student with ID: " + studentId + " is already enrolled in course with ID: " + courseId);
+        }
         //if there is already an enrollment request with the same courseId and studentId
         Optional<Enrollment> existingRequest = enrollmentRepository
                 .findByStudentIdAndCourseId(studentId, courseId);
@@ -49,12 +55,18 @@ public class StudentService {
         // Proceed with enrolling the student if there is no existing enrollment request
 
         Course course = courseRepository.findByIdAndStatus(courseId, CourseStatus.APPROVED).orElse(null);
+
         if(course == null)
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course with ID: "+courseId+" doesn't exist");
         }
 
+
         if (course != null && !course.getEnrolledStudentIds().contains(studentId)) {
+            if (course.getCapacity() == 0) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Course with ID: " + courseId + " is full");
+            }
+
             Enrollment enrollment = new Enrollment();
             enrollment.setCourseId(courseId);
             enrollment.setStudentId(studentId);
@@ -63,10 +75,14 @@ public class StudentService {
             courseRepository.save(course);
             return ResponseEntity.status(HttpStatus.OK).body("Student with ID: " + studentId
                     + " has request to enroll in course with ID: " + courseId);
+
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error enrolling student");
     }
     public List<Course> getEnrolledCoursesForStudent(Long studentId) {
+        return courseRepository.findByEnrolledStudentIdsContains(studentId);
+    }
+    public List<Course> getAvailableCoursesForStudent(Long studentId) {
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
 

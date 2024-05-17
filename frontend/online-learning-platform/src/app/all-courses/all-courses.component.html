@@ -1,0 +1,21 @@
+
+    <header>
+        <h1>All Courses</h1>
+        <div class="filter">
+            <input type="text" id="searchInput" placeholder="Search by name or category">
+            <select id="sortBy">
+                <option value="ratings">Sort by Ratings</option>
+            </select>
+            <button id="applyFilterBtn">Apply Filter</button>
+        </div>
+    </header>
+    <main>
+    
+        <div class="course-card" *ngFor="let course of courses">
+            <h2>{{ course.name }}</h2>
+            <p>Category: {{ course.category }}</p>
+            <p>Ratings: {{ course.rating }}</p>
+            <button class="enroll-btn" (click)="enroll(course.id!)">Enroll</button>
+        </div>
+    
+    </main>

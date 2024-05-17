@@ -14,19 +14,6 @@ header h1 {
     margin: 0;
 }
 
-#enrollBtn {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-main {
-    padding: 20px;
-}
-
 .filter {
     display: flex;
     justify-content: space-between;
@@ -38,6 +25,19 @@ main {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.filter button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
 }
 
 .courses {

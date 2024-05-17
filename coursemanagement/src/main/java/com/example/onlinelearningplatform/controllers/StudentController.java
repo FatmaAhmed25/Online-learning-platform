@@ -21,10 +21,15 @@ public class StudentController {
     public ResponseEntity<?> enrollStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
         return studentService.enrollStudent(studentId, courseId);
     }
-    @GetMapping("/enrolledcourses/{studentId}")
+    @GetMapping("/enrolledCourses/{studentId}")
     public ResponseEntity<List<Course>> getEnrolledCoursesForStudent(@PathVariable Long studentId) {
         List<Course> enrolledCourses = studentService.getEnrolledCoursesForStudent(studentId);
         return ResponseEntity.ok(enrolledCourses);
+    }
+    @GetMapping("/getAvailableCourses/{studentId}")
+    public ResponseEntity<List<Course>> getAvailableCourses(@PathVariable Long studentId) {
+        List<Course> availableCourses = studentService.getAvailableCoursesForStudent(studentId);
+        return ResponseEntity.ok(availableCourses);
     }
 
 }

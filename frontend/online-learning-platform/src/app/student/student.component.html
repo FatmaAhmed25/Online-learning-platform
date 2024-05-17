@@ -1,1 +1,18 @@
-<p>student works!</p>
+<header>
+    <h1>Welcome to Student Dashboard</h1>
+    <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">Enroll in New Courses</button>
+</header>
+<main>
+    <div class="filter">
+        <input type="text" id="searchInput" placeholder="Search by name or category">
+        <select id="sortBy">
+            <option value="ratings">Sort by Ratings</option>
+        </select>
+    </div>
+    <div class="course-card" *ngFor="let course of courses">
+        <h2>{{ course.name }}</h2>
+        <p>Category: {{ course.category }}</p>
+        <p>Ratings: {{ course.rating }}</p>
+        <!-- <button class="enroll-btn" (click)="enroll(course.id!)">Enroll</button> -->
+    </div>
+</main>

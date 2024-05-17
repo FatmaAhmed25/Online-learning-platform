@@ -18,8 +18,6 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
-
-
     @GetMapping("/count")
     public long getNumberOfCourses() {
         return courseService.count();

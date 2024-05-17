@@ -50,6 +50,7 @@ public class EnrollmentService {
                 enrolledStudentIds.add(studentId);
                 course.setNumberOfEnrolledStudents(course.getNumberOfEnrolledStudents()+1);
                 course.setEnrolledStudentIds(enrolledStudentIds);
+                course.setCapacity(course.getCapacity() - 1);
                 courseRepository.save(course);
             }
 
@@ -80,7 +81,6 @@ public class EnrollmentService {
             Enrollment enrollment = optionalEnrollment.get();
 
             // if the enrollment is not already approved
-
 
             if (enrollment.getStatus().equals(EnrollmentStatus.ACCEPTED)) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
