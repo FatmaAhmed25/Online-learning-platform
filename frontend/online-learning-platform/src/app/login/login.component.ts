@@ -21,18 +21,20 @@ export class LoginComponent {
         console.log(response.id)
         const user_id=response.id
         localStorage.setItem('userId', user_id);
-        const userRole = response.role; // Assuming you retrieve the user's role from the response
+        const userRole = response.role; 
         if (userRole === 'STUDENT') {
           this.router.navigate(['/student/' + user_id]);
         } else if (userRole === 'INSTRUCTOR') {
           this.router.navigate(['/instructor/' + user_id]);
         }
-        // Redirect to dashboard or home page
+        else{
+          this.router.navigate(['/admin/' + user_id]);
+        }
+        
         //this.router.navigate(['/dashboard']);
       },
       error => {
         console.error('Error logging in:', error);
-        // Handle error, such as displaying an error message to the user
       }
     );
   }

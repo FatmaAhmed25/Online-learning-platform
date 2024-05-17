@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 body {
-  --primary-color: #a855f7;
-  --primary-color-dark: #9333ea;
+  --primary-color: #040458;
+  --tw-bg-opacity: 1;
+  --primary-color-dark: #000033;
   --secondary-color: #ca8a04;
   --text-dark: #1f2937;
   --text-light: #6b7280;
@@ -10,7 +11,7 @@ body {
   --max-width: 1200px;
 }
 h1{
-color: #292F36;
+color:  #000033;
 margin: 0 0 0.5em 0;
 font-family: "Barlow Semi Condensed Semibold", sans-serif;
 font-size: 2.2rem;
@@ -57,10 +58,11 @@ nav {
 }
 
 nav .logo a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 570;
+  color: #000033;
   transition: 0.3s;
+ 
 }
 nav .logo a:hover {
   color: var(--primary-color-dark);
