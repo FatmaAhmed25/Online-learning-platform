@@ -10,7 +10,7 @@ import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstru
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'registerstudent', component: RegisterComponent },
   { path: '', component: HomepageComponent },
   { path: 'registerstudent', component: RegisterComponent },
   { path: 'registerinstructor', component: RegsiterinstructorComponent },

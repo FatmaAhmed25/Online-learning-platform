@@ -76,16 +76,15 @@ public class StudentService {
             return ResponseEntity.status(HttpStatus.OK).body("Student with ID: " + studentId
                     + " has request to enroll in course with ID: " + courseId);
 
-        }
+    }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error enrolling student");
     }
     public List<Course> getEnrolledCoursesForStudent(Long studentId) {
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
-    public List<Course> getAvailableCoursesForStudent(Long studentId) {
+     public List<Course> getAvailableCoursesForStudent(Long studentId) {
         return courseRepository.findByEnrolledStudentIdsContains(studentId);
     }
-
 
 
 }
