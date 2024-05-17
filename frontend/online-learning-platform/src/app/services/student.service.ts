@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
+import { Enrollment } from '../models/Enrollment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,20 @@ export class StudentService {
   }
   getAllCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseUrl}/courses`);
+  }
+  getAcceptedEnrollmentsForStudent(studentId: number): Observable<Enrollment[]> {
+    return this.http.get<Enrollment[]>(`${this.baseUrl}/enrollments/student/${studentId}/accepted`);
+  }
+
+  getRejectedEnrollmentsForStudent(studentId: number): Observable<Enrollment[]> {
+    return this.http.get<Enrollment[]>(`${this.baseUrl}/enrollments/student/${studentId}/rejected`);
+  }
+
+  getPendingEnrollmentsForStudent(studentId: number): Observable<Enrollment[]> {
+    return this.http.get<Enrollment[]>(`${this.baseUrl}/enrollments/student/${studentId}/pending`);
+  }
+
+  cancelPendingEnrollment(studentId: number, courseId: number): Observable<string> {
+    return this.http.delete<string>(`${this.baseUrl}/enrollments/${studentId}/${courseId}`);
   }
 }
