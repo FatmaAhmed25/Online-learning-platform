@@ -3,10 +3,7 @@ package com.example.onlinelearningplatform.services;
 
 import com.example.onlinelearningplatform.models.*;
 import com.example.onlinelearningplatform.repositories.CourseRepository;
-import com.example.onlinelearningplatform.repositories.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,6 +44,13 @@ public class CourseService {
     }
     public List<Course> getAvailableCoursesForStudent(Long studentId) {
         return courseRepository.findAvailableCoursesForStudent(studentId);
+    }
+
+    public List<Course> searchByNameAndSort(String name) {
+        return courseRepository.findByNameContainingIgnoreCaseAndStatusOrderByRatingDesc(name,CourseStatus.APPROVED);
+    }
+    public List<Course> searchByCategoryAndSort(String name) {
+        return courseRepository.findByCategoryContainingIgnoreCaseAndStatusOrderByRatingDesc(name,CourseStatus.APPROVED);
     }
 
 }

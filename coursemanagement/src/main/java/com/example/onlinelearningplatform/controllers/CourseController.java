@@ -2,12 +2,9 @@ package com.example.onlinelearningplatform.controllers;
 
 
 import com.example.onlinelearningplatform.models.Course;
-import com.example.onlinelearningplatform.models.Enrollment;
 import com.example.onlinelearningplatform.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,5 +43,15 @@ public class CourseController {
         return ResponseEntity.ok(courses);
     }
 
+    @GetMapping("/search/top-rated/name/{name}")
+    public ResponseEntity<List<Course>> searchByNameAndSort(@PathVariable String name) {
+        List<Course> courses = courseService.searchByNameAndSort(name);
+        return ResponseEntity.ok(courses);
+    }
+    @GetMapping("/search/top-rated/category/{name}")
+    public ResponseEntity<List<Course>> searchByCategoryAndSort(@PathVariable String name) {
+        List<Course> courses = courseService.searchByCategoryAndSort(name);
+        return ResponseEntity.ok(courses);
+    }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.naming.Name;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,7 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
             "LEFT JOIN course_enrolled_student_ids ce ON c.id = ce.course_id " +
             "WHERE ce.enrolled_student_ids <> :studentId OR ce.enrolled_student_ids IS NULL", nativeQuery = true)
     List<Course> findAvailableCoursesForStudent(@Param("studentId") Long studentId);
-
+    List<Course> findByNameContainingIgnoreCaseAndStatusOrderByRatingDesc(String name,CourseStatus status);
+    List<Course> findByCategoryContainingIgnoreCaseAndStatusOrderByRatingDesc(String name,CourseStatus status);
 }
 

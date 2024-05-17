@@ -2,11 +2,12 @@
     <header>
         <h1>All Courses</h1>
         <div class="filter">
-            <input type="text" id="searchInput" placeholder="Search by name or category">
-            <select id="sortBy">
-                <option value="ratings">Sort by Ratings</option>
+            <input type="text" #searchInput id="searchInput" placeholder="Search" (keyup.enter)="search()">
+            <select [(ngModel)]="selectedFilter" (change)="onFilterChange()">
+                <option value="name">Search by Name</option>
+                <option value="category">Search by Category</option>
             </select>
-            <button id="applyFilterBtn">Apply Filter</button>
+            <button id="applyFilterBtn" (click)="searchandSort()">Sort by rating</button>
         </div>
     </header>
     <main>
