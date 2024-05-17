@@ -22,6 +22,8 @@ public class CourseService {
         return courseRepository.findByStatus(CourseStatus.APPROVED);
     }
 
+
+
     public Optional<Course> getCourseById(Long id) {
         return courseRepository.findByIdAndStatus(id, CourseStatus.APPROVED);
     }

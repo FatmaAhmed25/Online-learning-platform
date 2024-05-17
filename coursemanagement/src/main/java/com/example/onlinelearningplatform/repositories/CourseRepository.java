@@ -16,6 +16,10 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
     List<Course> findByOrderByRatingDesc();
 
     List<Course> findByInstructorId(Long instructorId);
+
+    List<Course> findByInstructorIdAndStatus(Long instructorId,CourseStatus status);
+    long countByInstructorIdAndStatus(Long instructorId, CourseStatus status);
+
     List<Course> findByEnrolledStudentIdsContains(Long studentId);
 
     List<Course> findByStatus(CourseStatus courseStatus);
@@ -29,8 +33,10 @@ public interface CourseRepository extends JpaRepository <Course,Long> {
     List<Course> findByStatusOrderByRatingDesc(CourseStatus status);
 
     List<Course> findByEnrolledStudentIdsContainsAndStatus(Long studentId, CourseStatus status);
+    boolean existsByIdAndEnrolledStudentIdsIsContaining(Long courseId, Long studentId);
     long countByStatus(CourseStatus status);
     List<Course> findCoursesByStatus(CourseStatus status);
+
 
 }
 

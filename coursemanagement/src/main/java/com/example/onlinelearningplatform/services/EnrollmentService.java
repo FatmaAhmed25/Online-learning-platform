@@ -50,6 +50,7 @@ public class EnrollmentService {
                 enrolledStudentIds.add(studentId);
                 course.setNumberOfEnrolledStudents(course.getNumberOfEnrolledStudents()+1);
                 course.setEnrolledStudentIds(enrolledStudentIds);
+                course.setCapacity(course.getCapacity() - 1);
                 courseRepository.save(course);
             }
 
