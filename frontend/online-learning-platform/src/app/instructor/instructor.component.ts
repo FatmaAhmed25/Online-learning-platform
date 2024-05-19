@@ -21,10 +21,12 @@ export class InstructorComponent implements OnInit {
   constructor(private route: ActivatedRoute, private instructorService: InstructorService) {}
 
   ngOnInit(): void {
+    this.fetchEnrollments();
     this.route.params.subscribe(params => {
       this.instructorId = +params['id'];
       this.fetchCounts();
       this.fetchEnrollments();
+ 
     });
   }
 
@@ -59,7 +61,9 @@ export class InstructorComponent implements OnInit {
 
   approveEnrollment(enrollmentId: number): void {
     this.instructorService.approveEnrollment(enrollmentId).subscribe(() => {
-      this.moveEnrollment(enrollmentId, this.pendingEnrollments, this.acceptedEnrollments, 'ACCEPTED');
+      //this.moveEnrollment(enrollmentId, this.pendingEnrollments, this.acceptedEnrollments, 'ACCEPTED');
+      this.fetchEnrollments();
+      this.getFilteredEnrollments();
     });
     this.fetchEnrollments();
     this.getFilteredEnrollments()

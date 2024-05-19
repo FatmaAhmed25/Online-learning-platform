@@ -1,5 +1,5 @@
 import { CourseStatus } from "./courseStatus";
-
+import { Review  }from "./review.model"
 export interface Course {
     id?: number; // Optional property
     instructorId: number;
@@ -9,4 +9,6 @@ export interface Course {
     rating : number;
     capacity : number;
     status : CourseStatus;
+    numberOfEnrolledStudents:number;
+    reviews?: Review[];
 }

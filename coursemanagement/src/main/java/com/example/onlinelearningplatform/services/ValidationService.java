@@ -13,10 +13,26 @@ public class ValidationService {
     private RestTemplate restTemplate;
 
     public boolean validateAdmin(Long adminId) {
-        // Make HTTP request to external API to validate instructor ID
-        String url = "http://localhost:8080/Online-Learning-Platform-3.0-SNAPSHOT/api/admin/validate?id=" + adminId;
-        Boolean isValid = restTemplate.getForObject(url, Boolean.class);
-        return isValid == null || !isValid; // Assuming the API returns a boolean indicating validity
+
+       String url = "http://localhost:8080/Online-Learning-Platform-3.0-SNAPSHOT/api/admin/validate?id=" + adminId;
+        try {
+
+            ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
+
+            if (response.getStatusCode() == HttpStatus.OK) {
+                return true;
+            } else if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
+                return false;
+            } else {
+                return false;
+            }
+        } catch (HttpClientErrorException.NotFound e) {
+            //404 Not Found error
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean validateInstructor(Long instructorId) {

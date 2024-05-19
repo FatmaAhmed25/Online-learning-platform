@@ -1,11 +1,13 @@
 package com.example.onlinelearningplatform.rest;
 
+
 import com.example.onlinelearningplatform.ejbs.AdminEJB;
 import com.example.onlinelearningplatform.entities.Instructor;
 import com.example.onlinelearningplatform.entities.Student;
 import com.example.onlinelearningplatform.entities.User;
 
 import javax.ejb.EJB;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,11 +20,14 @@ public class AdminController {
 
     @EJB
     AdminEJB adminEJB;
-
     @GET
     @Path("/validate")
-    public boolean validateInstructorId(@QueryParam("id") Long instructorId) {
-        return adminEJB.validateAdmin(instructorId);
+    public Response getStudentById(@QueryParam("id") long adminId) {
+        User instructor = adminEJB.getAdminById(adminId);
+        if(instructor==null)
+            return Response.status(Response.Status.NOT_FOUND).entity("admin not found").build();
+        return Response.ok(instructor).build();
+
     }
 
     @GET
@@ -54,9 +59,15 @@ public class AdminController {
     }
 
     @PUT
-    @Path("/user")
+    @Path("/edituser")
     public Response editUser(User editedUser) {
-        adminEJB.editUserAccount(editedUser);
-        return Response.ok().build();
+        try {
+            adminEJB.editUserAccount(editedUser);
+            return Response.ok().build();
+        } catch (EntityNotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
     }
 }

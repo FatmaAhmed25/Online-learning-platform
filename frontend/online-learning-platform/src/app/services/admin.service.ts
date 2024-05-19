@@ -30,7 +30,7 @@ export class AdminService {
   }
 
   editUser(user: User): Observable<void> {
-    return this.http.put<void>(`${this.userManagementURL}/admin/user`, user);
+    return this.http.put<void>(`${this.userManagementURL}/admin/edituser`, user);
   }
   approveCourse(courseId: number, adminId: number): Observable<any> {
     // Construct URL with courseId as path parameter

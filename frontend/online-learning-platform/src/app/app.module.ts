@@ -22,6 +22,7 @@ import { StudentEnrollmentsComponent } from './student-enrollments/student-enrol
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { UsersComponent } from './users/users.component';
 import { SearchCoursesComponent } from './search-courses/search-courses.component';
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -42,7 +42,7 @@ public class RegistrationEJB
         }
 
         // If email doesn't exist, proceed with registration
-        Instructor instructor = new Instructor(instructorDTO.getName(),instructorDTO.getEmail(),instructorDTO.getPassword(),instructorDTO.getAffiliation(),instructorDTO.getBio(),UserRole.INSTRUCTOR, instructorDTO.getYearsOfExperience());
+        Instructor instructor = new Instructor(instructorDTO.getName(),instructorDTO.getEmail(),instructorDTO.getPassword(),instructorDTO.getAffiliation(),instructorDTO.getBio(), instructorDTO.getYearsOfExperience(),UserRole.INSTRUCTOR);
         em.persist(instructor);
     }
     private boolean isEmailExists(String email) {

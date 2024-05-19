@@ -21,7 +21,7 @@ public class InstructorController {
     private InstructorEJB instructorEJB;
     @GET
     @Path("/{instructorId}")
-    public Response getStudentById(@PathParam("instructorId") long instructorId) {
+    public Response getInstructorById(@PathParam("instructorId") long instructorId) {
         User instructor = instructorEJB.getInstructorById(instructorId);
         if(instructor==null)
             return Response.status(Response.Status.NOT_FOUND).entity("instructor not found").build();

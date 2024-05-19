@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
-
+import { Review } from '../models/review.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,5 +38,8 @@ export class CourseService {
 
   searchByCategoryAndSort(category: string): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseUrl}/courses/search/top-rated/category/${category}`);
+  }
+  getReviewsForCourse(courseId: number): Observable<Review[]> {
+    return this.http.get<Review[]>(`${this.baseUrl}/reviews/courses/${courseId}`);
   }
 }
