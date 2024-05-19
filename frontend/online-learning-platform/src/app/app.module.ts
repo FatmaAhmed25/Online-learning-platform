@@ -20,6 +20,8 @@ import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstru
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { StudentEnrollmentsComponent } from './student-enrollments/student-enrollments.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
+import { UsersComponent } from './users/users.component';
+import { SearchCoursesComponent } from './search-courses/search-courses.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { CreateCourseComponent } from './create-course/create-course.component';
     RegsiterinstructorComponent,
     AllCoursesComponent,
     StudentEnrollmentsComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    UsersComponent,
+    SearchCoursesComponent
   ],
   imports: [
     BrowserAnimationsModule,

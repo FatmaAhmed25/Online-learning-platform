@@ -10,6 +10,8 @@ import { RegsiterinstructorComponent } from './regsiterinstructor/regsiterinstru
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { StudentEnrollmentsComponent } from './student-enrollments/student-enrollments.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
+import { UsersComponent } from './users/users.component';
+import { SearchCoursesComponent } from './search-courses/search-courses.component';
 
 const routes: Routes = [
   { path: 'registerstudent', component: RegisterComponent },
@@ -21,8 +23,11 @@ const routes: Routes = [
   { path: 'student/:id', component: StudentComponent },
   { path: 'instructor/:id', component: InstructorComponent },
   { path: 'AllCourses/:id', component: AllCoursesComponent },
-  { path: 'studentEnrollments/:id', component: StudentEnrollmentsComponent}
+  { path: 'search-courses', component: SearchCoursesComponent },
+  { path: 'studentEnrollments/:id', component: StudentEnrollmentsComponent},
   { path: 'create-course', component: CreateCourseComponent },
+  { path: 'users', component: UsersComponent },
+
 ];
 
 @NgModule({

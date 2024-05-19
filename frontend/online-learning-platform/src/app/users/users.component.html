@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <div *ngFor="let user of users">
+        <p>{{ user.id }}</p>
+        <p>User Name: {{ user.name }}</p>
+        <p>User Email: {{ user.email }}</p>
+        <!-- Add an edit form for each user -->
+        <form (submit)="editUser(user)">
+          <input type="text" [(ngModel)]="user.name" name="name" placeholder="New Name">
+          <input type="email" [(ngModel)]="user.email" name="email" placeholder="New Email">
+          <button type="submit">Edit</button>
+        </form>
+        <button class="btn btn-danger" (click)="user.id && deleteUser(user.id)">Delete</button>
+      </div>
+    </table>
+  </div>
+  

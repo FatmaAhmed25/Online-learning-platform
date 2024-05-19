@@ -65,7 +65,7 @@ public class AdminService {
 
     public ResponseEntity<Object> rejectCourse(Long courseId,Long adminId) {
 
-        if(validationService.validateAdmin(adminId))
+        if(!validationService.validateAdmin(adminId))
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin with ID: "+adminId+" doesn't exist");
         }

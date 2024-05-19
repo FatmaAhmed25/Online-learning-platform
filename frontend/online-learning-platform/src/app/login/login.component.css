@@ -106,28 +106,7 @@ main{
     width: 100%;
     margin-top: 20px;
 }
-@media only screen and (max-width:840px){
-    .main-box .top{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .top .box{
-        margin: 10px 10px;
-    }
-    .bottom{
-        margin-top: 0;
-    }
-}
-.message{
-    text-align: center;
-    background: #f9eded;
-    padding: 15px 0px;
-    border:1px solid #699053;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    color: red;
-}
+
 
 
 
@@ -227,89 +206,17 @@ h1{
       color: var(--secondary-color);
     }
     
-    .section {
-      background-color: var(--extra-light);
-    }
+
     
-    .section__container {
-      min-height: 100vh;
-      max-width: var(--max-width);
-      margin: auto;
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4rem;
-    }
+
+   
     
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+  
     
-    .subtitle {
-      letter-spacing: 2px;
-      color: var(--text-light);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    /* 
-    .title {
-      font-size: 2.5rem;
-      font-weight: 400;
-      line-height: 3rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-    } */
+
+
     
-    .title span {
-      font-weight: 600;
-    }
-    
-    .description {
-      line-height: 1.5rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-    }
-    
-    .action__btns {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .action__btns button {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      padding: 1rem 2rem;
-      outline: none;
-      border: 2px solid var(--primary-color);
-      border-radius: 10px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    
-    
-    
-    .join {
-      color: var(--primary-color);
-    }
-    
-    .join:hover {
-      background-color: var(--primary-color-dark);
-      color: #ffffff;
-    }
-    
-    .image {
-      display: grid;
-      place-items: center;
-    }
-    
-    .image img {
-      /* width: min(50rem, 100%); */
-      width:600px
-      /* border-radius: 100%; */
-    }
+   
     
     @media (width < 750px) {
       nav .checkbox {

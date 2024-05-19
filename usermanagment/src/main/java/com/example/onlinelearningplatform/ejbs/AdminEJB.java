@@ -18,7 +18,7 @@ public class AdminEJB {
 
     EntityManager em;
     public boolean validateAdmin(Long adminId) {
-        // Check if an instructor with the given ID exists in the database
+
         Admin admin = em.find(Admin.class, adminId);
         return admin != null;
     }
