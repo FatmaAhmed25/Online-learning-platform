@@ -75,6 +75,73 @@ public class AdminEJB {
 
         em.merge(existingUser);
     }
+    public void editStudentAccount(Student editedStudent) {
+        // Retrieve the existing student from the database
+        Student existingStudent = em.find(Student.class, editedStudent.getId());
+
+        // Check if the student exists
+        if (existingStudent == null) {
+            throw new EntityNotFoundException("Student not found with id " + editedStudent.getId());
+        }
+
+        // Update common fields only if they are not null in editedStudent
+        if (editedStudent.getName() != null) {
+            existingStudent.setName(editedStudent.getName());
+        }
+        if (editedStudent.getEmail() != null) {
+            existingStudent.setEmail(editedStudent.getEmail());
+        }
+        if (editedStudent.getPassword() != null) {
+            existingStudent.setPassword(editedStudent.getPassword());
+        }
+
+        // Update student-specific fields
+        if (editedStudent.getAffiliation() != null) {
+            existingStudent.setAffiliation(editedStudent.getAffiliation());
+        }
+        if (editedStudent.getBio() != null) {
+            existingStudent.setBio(editedStudent.getBio());
+        }
+
+        // Merge the changes into the database
+        em.merge(existingStudent);
+    }
+
+    public void editInstructorAccount(Instructor editedInstructor) {
+        // Retrieve the existing instructor from the database
+        Instructor existingInstructor = em.find(Instructor.class, editedInstructor.getId());
+
+        // Check if the instructor exists
+        if (existingInstructor == null) {
+            throw new EntityNotFoundException("Instructor not found with id " + editedInstructor.getId());
+        }
+
+        // Update common fields only if they are not null in editedInstructor
+        if (editedInstructor.getName() != null) {
+            existingInstructor.setName(editedInstructor.getName());
+        }
+        if (editedInstructor.getEmail() != null) {
+            existingInstructor.setEmail(editedInstructor.getEmail());
+        }
+        if (editedInstructor.getPassword() != null) {
+            existingInstructor.setPassword(editedInstructor.getPassword());
+        }
+
+        // Update instructor-specific fields
+        if (editedInstructor.getAffiliation() != null) {
+            existingInstructor.setAffiliation(editedInstructor.getAffiliation());
+        }
+        if (editedInstructor.getBio() != null) {
+            existingInstructor.setBio(editedInstructor.getBio());
+        }
+        if (editedInstructor.getYearsOfExperience() != null) {
+            existingInstructor.setYearsOfExperience(editedInstructor.getYearsOfExperience());
+        }
+
+        // Merge the changes into the database
+        em.merge(existingInstructor);
+    }
+
 
 
     public List<User> getAllUserAccounts() {

@@ -22,13 +22,29 @@ public class AdminController {
     AdminEJB adminEJB;
     @GET
     @Path("/validate")
-    public Response getStudentById(@QueryParam("id") long adminId) {
-        User instructor = adminEJB.getAdminById(adminId);
-        if(instructor==null)
+    public Response getAdminById(@QueryParam("id") long adminId) {
+        User admin= adminEJB.getAdminById(adminId);
+        if(admin==null)
             return Response.status(Response.Status.NOT_FOUND).entity("admin not found").build();
-        return Response.ok(instructor).build();
+        return Response.ok(admin).build();
 
     }
+    @PUT
+    @Path("/students")
+    public Response editStudent(Student editedStudent) {
+        adminEJB.editStudentAccount(editedStudent);
+        return Response.ok("Student account updated successfully").build();
+    }
+
+    @PUT
+    @Path("/instructors")
+    @Consumes("application/json")
+    @Produces("text/plain")
+    public Response editInstructor(Instructor editedInstructor) {
+        adminEJB.editInstructorAccount(editedInstructor);
+        return Response.ok("Instructor account updated successfully").build();
+    }
+
 
     @GET
     @Path("/users")
