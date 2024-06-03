@@ -1,0 +1,148 @@
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; 
+  }
+  
+ 
+  table {
+    width: 80%; 
+    border-collapse: collapse;
+    border-radius: 130px;
+    margin-top: 10px; 
+  }
+  .logo{
+    font-size: 20px;
+  }
+  
+  table th, table td {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #000327;
+    color: white;
+  }
+  
+
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Table row hover styles */
+  table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #797979;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+.delete{
+    background-color:rgb(129, 0, 0);
+  }
+  .delete:hover{
+    background-color:rgb(62, 0, 0);
+  }
+  button:hover {
+    background-color: #1e1e1e;
+  }
+  
+  /* Input styles */
+  input {
+    width: 100%;
+    padding: 8px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+  }
+  
+
+
+
+
+
+
+
+  
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+} */
+
+body {
+    background: #ecececdb;
+}
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    --primary-color: #000033;
+    --primary-color-dark: #000033;
+    --secondary-color: #ca8a04;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --extra-light: #faf5ff;
+    --max-width: 1200px;
+}
+
+body {
+    background: #faf5ff;
+}
+
+.navv nav {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.nav__content {
+    max-width: var(--max-width);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
+
+
+.container {
+    margin-top: 70px;
+    max-width: var(--max-width);
+    padding: 20px;
+}
+

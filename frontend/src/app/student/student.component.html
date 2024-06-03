@@ -1,0 +1,54 @@
+<head>
+  
+   
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Dashboard</title>
+</head>
+<header>
+    <h1>Student Dashboard</h1>
+    <br>
+    <button id="enrollBtn" [routerLink]="['/AllCourses', studentId]">Enroll in New Courses</button>
+    <span style="margin-right: 20px;"></span>
+    <button id="enrollBtn" [routerLink]="['/studentEnrollments', studentId]">View My Enrollment Requests</button>
+    <span style="margin-right: 20px;"></span>
+    <!-- Notification dropdown button -->
+    <div class="notification-dropdown">
+        <button id="notificationBtn" (click)="toggleNotifications(); getNotifications();">
+            <i class="fas fa-bell"></i> 
+        </button>
+        <!-- Notification dropdown content -->
+        <div class="notification-dropdown-content" *ngIf="showNotifications">
+            <div class="notification" *ngFor="let notification of notifications">
+                <p>{{ notification.message }}</p>
+                <p class="notification-time">{{ notification.timestamp | date: 'short' }}</p>
+                <!-- <p>{{ notification.timestamp | date: 'shortTime' }}</p> -->
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+ <main>
+
+    <h3>My Courses</h3>
+    <div class="course-card" *ngFor="let course of courses">
+        <h2>{{ course.name }}</h2>
+        <p>Category: {{ course.category }}</p>
+        <p>Duration: {{ course.duration }}</p>
+        <p>Capacity: {{ course.capacity}}</p>
+        <p>Ratings: {{ course.rating }}</p>
+     <!-- Button to open review and rating box -->
+     <button class="review" (click)="openReviewAndRatingBox(course)">Review & Rate</button>
+     <!-- Review and rating box -->
+     <div *ngIf="selectedCourse === course && reviewAndRatingMode">
+         <textarea style="margin-top: 10px;"  [(ngModel)]="reviewText" placeholder="Write your review"></textarea>
+         <br>
+         <input type="number" [(ngModel)]="rating" placeholder="Enter your rating">
+         <br>
+         <button style="border-radius: 10px;  margin-top: 10px;"(click)="submitReviewAndRating(course)">submit</button>
+     </div>
+    </div>
+</main> 

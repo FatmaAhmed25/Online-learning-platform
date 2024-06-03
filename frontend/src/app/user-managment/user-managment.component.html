@@ -1,0 +1,73 @@
+
+<body>
+<div class="navv">
+    <nav>
+      <div class="nav__content">
+        <div class="logo">Manage Users</div>
+        <div class="search-bar">
+     
+  
+       
+         
+        </div>
+      </div>
+    </nav>
+  </div>
+<div class="container">
+<h2>Students table</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Affiliation</th>
+    <th>Bio</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <!-- <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.email }}</td> -->
+    <td><input type="text" [(ngModel)]="student.id" disabled></td>
+    <td><input type="text" [(ngModel)]="student.name"></td>
+    <td><input type="text" [(ngModel)]="student.email"></td>
+    <td><input type="text" [(ngModel)]="student.affiliation"></td>    
+    <td><input type="text" [(ngModel)]="student.bio"></td>
+    <td><button (click)="editStudent(student)">Save</button></td>
+    <td><button class="delete"(click)="deleteUser(student.id)">Delete</button></td>
+  </tr>
+</table>
+</div>
+<div class="container">
+<div>
+<h2>Instructors table</h2>
+</div>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Affiliation</th>
+    <th>Bio</th>
+    <th>Years of Experience</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let instructor of instructors">
+    <!-- <td>{{ instructor.id }}</td>
+    <td>{{ instructor.name }}</td>
+    <td>{{ instructor.email }}</td> -->
+    <td><input type="text" [(ngModel)]="instructor.id" disabled></td>
+    <td><input type="text" [(ngModel)]="instructor.name"></td>
+    <td><input type="text" [(ngModel)]="instructor.email"></td>
+    <td><input type="text" [(ngModel)]="instructor.affiliation"></td>
+    <td><input type="text" [(ngModel)]="instructor.bio"></td>
+    <td><input type="number" [(ngModel)]="instructor.yearsOfExperience"></td>
+    <td><button (click)="editInstructor(instructor)">Save</button></td>
+    <td><button class="delete" (click)="deleteUser(instructor.id)">Delete</button></td>
+  </tr>
+</table>
+</div>
+
+</body>

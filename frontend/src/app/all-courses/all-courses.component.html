@@ -1,0 +1,24 @@
+
+    <header>
+        <h1>All Courses</h1>
+        <div class="filter">
+            <input type="text" #searchInput id="searchInput" placeholder="Search" (keyup.enter)="search()">
+            <select [(ngModel)]="selectedFilter" (change)="onFilterChange()">
+                <option value="name">Search by Name</option>
+                <option value="category">Search by Category</option>
+            </select>
+            <button id="applyFilterBtn" (click)="searchandSort()">Sort by rating</button>
+        </div>
+    </header>
+    <main>
+    
+        <div class="course-card" *ngFor="let course of courses">
+            <h2>{{ course.name }}</h2>
+            <p>Category: {{ course.category }}</p>
+            <p>Duration: {{ course.duration }}</p>
+            <p>Capacity: {{ course.capacity}}</p>
+            <p>Ratings: {{ course.rating }}</p>
+            <button class="enroll-btn" (click)="enroll(course.id!)">Enroll</button>
+        </div>
+    
+    </main>

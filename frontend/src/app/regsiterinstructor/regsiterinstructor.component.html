@@ -1,0 +1,71 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../regsiterinstructor/regsiterinstructor.component.css">
+      <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+      <title>Login</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Learning Platform</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="">Home</a></li>
+        
+          <li><a href="/login">Login</a></li>
+          <li><a href="/registerstudent">Register as Student</a></li>
+  
+        </ul>
+      </div>
+    </nav>
+        <div class="container">
+          <div class="box form-box">
+              <header>Instructor Register</header>
+              <form (ngSubmit)="registerInstructor()">
+                <div class="field input">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" [(ngModel)]="user.name" required>
+                </div>
+                  <div class="field input">
+                      <label for="email">Email</label>
+                      <input type="text" name="email" id="email" [(ngModel)]="user.email" required>
+                  </div>
+  
+                  <div class="field input">
+                      <label for="password">Password</label>
+                      <input type="password" name="password" id="password"  [(ngModel)]="user.password" required>
+                  </div>
+                  <div class="field input">
+                    <label for="affiliation">affiliation</label>
+                    <input type="text" name="affiliation" id="affiliation" [(ngModel)]="user.affiliation" required>
+                </div>
+                <div class="field input">
+                    <label for="yoe"> yearsOfExperience</label>
+                    <input type="text" name="yoe" id="yoe" [(ngModel)]="user.yearsOfExperience" required>
+                </div>
+                <div class="field input">
+                    <label for="bio">Bio</label>
+                    <input type="text" name="bio" id="bio" [(ngModel)]="user.bio" required>
+                </div>
+  
+                  <div class="field">
+                      
+                      <input type="submit" class="btn" name="submit" value="Register" required>
+                  </div>
+               
+              </form>
+          </div>
+        
+        </div>
+  </body>
+  </html>

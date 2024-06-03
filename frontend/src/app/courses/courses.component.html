@@ -1,0 +1,83 @@
+<body>
+    <div class="navv">
+        <nav>
+            <div class="nav__content">
+                <div class="logo">Manage Courses</div>
+            </div>
+        </nav>
+    </div>
+    <div class="first">
+        <main class="table">
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Instructor ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Duration</th>
+                            <th>Rating</th>
+                            <th>Capacity</th>
+                            <th>Students</th>
+                            <th style=" text-align: center;">Status</th>
+                            <th style=" text-align: center;">Actions</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of courses">
+                            <td><input type="text" [(ngModel)]="course.id" disabled style="width: 25px; text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.instructorId" disabled style="width: 25px; text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.name" style="width: 80px;"></td>
+                            <td><input type="text" [(ngModel)]="course.category" style="width: 100px;text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.duration" style="width: 25px; text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.rating" style="width: 25px; text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.capacity" style="width: 25px; text-align: center;"></td>
+                            <td><input type="text" [(ngModel)]="course.numberOfEnrolledStudents" style="width: 25px; text-align: center; "disabled></td>
+                            <td style="text-align: center;" [ngClass]="{
+                                'status': course.status === 'APPROVED',
+                                'accepted': course.status === 'APPROVED',
+                                'cancelled': course.status === 'REJECTED',
+                                'pending': course.status === 'PENDING'
+                            }">{{ course.status }}</td>
+                            <td>
+                                <button (click)="editCourse(course.id, course)">Edit</button>
+                                <span style="margin-left: 10px;"></span>
+                                <button class="delete" (click)="deleteCourse(course.id)">Delete</button>
+                                <span style="margin-left: 10px;" *ngIf="course.status === 'APPROVED'">
+                                <button  class="review"  (click)="showReviews(course.id!)">Reviews</button>
+                            </span>
+                            </td>
+                        </tr>
+                        <!-- <tr *ngIf="selectedCourseId === course.id"> -->
+                            <tr>
+                            <td colspan="9">
+                                <div>
+                                      
+                                        <div class="comment-card" *ngFor="let review of selectedCourseReviews">
+                                            <div class="comment-content">
+                                                <p class="comment-text">Id {{ review.studentId }} commented {{ review.comment }}</p>
+                                           
+                                            </div>
+                                        </div>
+                           
+                                </div>
+                               
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                                
+                
+                </div>
+            </section>
+            <!-- <ul> -->
+                <!-- <li *ngFor="let review of selectedCourseReviews">
+                    Id{{ review.studentId }} commented {{ review.comment }} 
+                </li>
+            </ul> -->
+        </main>
+        
+    </div>
+</body>
