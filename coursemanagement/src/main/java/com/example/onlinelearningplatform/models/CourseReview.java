@@ -14,7 +14,7 @@ public class CourseReview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int rating;
+    private Double rating;
     private String comment;
     private Date createdAt;
 
@@ -32,11 +32,11 @@ public class CourseReview {
         this.id = id;
     }
 
-    public int getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

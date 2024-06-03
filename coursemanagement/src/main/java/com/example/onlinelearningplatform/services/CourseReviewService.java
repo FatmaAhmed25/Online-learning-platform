@@ -34,10 +34,32 @@ public class CourseReviewService {
 
         courseReview.setCreatedAt(new Date());
         courseReview.setCourse(course);
-        courseReview.setStudentId(studentId); // Set the student ID
+        courseReview.setStudentId(studentId);
 
+
+        if (courseReview.getRating()!=null) {
+            CourseReview existingReview = reviewRepository.findByCourseIdAndStudentIdAndRatingNotNull(courseId, studentId);
+            if(existingReview!=null) {
+                existingReview.setRating(null);
+                reviewRepository.save(existingReview);
+                System.out.println("hii"+existingReview.getRating());
+            }
+        };
+        reviewRepository.save(courseReview);
+
+
+
+        List<CourseReview> allReviewsForCourse = reviewRepository.findByCourseIdAndRatingNotNull(courseId);
+        System.out.println(allReviewsForCourse.size());
+        Double totalRating = allReviewsForCourse.stream().mapToDouble(CourseReview::getRating).sum();
+        double averageRating = totalRating / allReviewsForCourse.size();
+
+
+        course.setRating(averageRating);
+        courseRepository.save(course);
         return ResponseEntity.status(HttpStatus.OK).body(reviewRepository.save(courseReview));
     }
+
     public List<CourseReview> getReviewsForCourse(Long courseId) {
         return reviewRepository.findByCourseId(courseId);
     }
