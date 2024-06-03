@@ -55,7 +55,7 @@ public class EnrollmentService {
             }
 
             Notification notification = new Notification();
-            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+"has been approved");
+            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+" has been approved");
             notification.setTimestamp(LocalDateTime.now());
             notification.setStudentId(enrollment.getStudentId());
 
@@ -98,7 +98,7 @@ public class EnrollmentService {
             enrollmentRepository.save(enrollment);
 
             Notification notification = new Notification();
-            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+"has been rejected");
+            notification.setMessage("Your enrollment for course of id: " + enrollment.getCourseId()+" has been rejected");
             notification.setTimestamp(LocalDateTime.now());
             notification.setStudentId(enrollment.getStudentId());
 

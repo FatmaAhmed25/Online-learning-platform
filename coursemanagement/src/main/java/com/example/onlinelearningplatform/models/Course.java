@@ -17,9 +17,9 @@ public class Course {
     private Long instructorId;
     private String name;
     private String category;
-    private int duration;
-    private double rating;
-    private int capacity;
+    private Integer duration;
+    private Double rating=0.0;
+    private Integer capacity;
     private int numberOfEnrolledStudents;
 
     private Long adminId;
